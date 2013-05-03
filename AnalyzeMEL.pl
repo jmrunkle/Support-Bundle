@@ -9,7 +9,7 @@
 # $Revision: 1.0.0.0 $
 ################################################################################
 
-package AnalyzeMEL;
+package SupportBundle::AnalyzeMEL;
 
 use strict;
 use warnings;
@@ -42,7 +42,7 @@ sub print_usage_info {
 
 #-------------------------------------------------------------------------------
 
-if ($DEBUG) { @ARGV = ('-?', 'majorEventLog.txt'); }
+if ($DEBUG) { @ARGV = ('-n', 'majorEventLog.txt'); }
 my $arg = $ARGV[0];    # $arg = command line argument
 
 # if the argument is "-v" or "--version" print version
@@ -272,25 +272,23 @@ __END__
 
 =pod
 
-=for stopwords RCS
-
 =head1 NAME
 
-AnalyzeMEL - Analyzes a MEL for disk array troubleshooting
+    SupportBundle::AnalyzeMEL.pl - Analyzes a MEL for disk array troubleshooting
+
+=head1 VERSION
+
+    This documentation refers to SupportBundle::AnalyzeMEL.pl version 1.0.0.0.
 
 =head1 DESCRIPTION
 
-This program parses through a Major Event Log (MEL) searching for critical
-issues (such as URS conditions) or controller problems and prints them out in 
-an ordered table form so that the reader can look through it easily.
+    This program parses through a Major Event Log (MEL) searching for critical
+    issues (such as URS conditions) or controller problems and prints them out in 
+    an ordered table form so that the reader can look through it easily.
 
 =head1 USAGE
 
-C<perl AnalyzeMEL.pl [-n|-v|-?|majorEventLog.txt]>
-
-=head1 REQUIRED ARGUMENTS
-
-No arguments are required to run this command.
+    C<perl AnalyzeMEL.pl [-n|-v|-?|majorEventLog.txt]>
 
 =head1 OPTIONS
 
@@ -298,59 +296,30 @@ No arguments are required to run this command.
 
 =item C<-n>, C<--nohup>
 
-Run without user input and print to STDOUT
+    Run without user input and print to STDOUT
 
 =item C<-v>, C<--version>
 
-Print version number and exit
+    Print version number and exit
 
 =item C<-h>, C<--help>, C<-?>
 
-Print usage information and exit
+    Print usage information and exit
 
 =back
 
-=head1 DIAGNOSTICS
-
-No relevant diagnostics for this tool at this time.
-
 =head1 EXIT STATUS
 
-If the program exited successfully, it will exit with a code of 0.
-Otherwise, the execution was not successful.
-
-=head1 CONFIGURATION
-
-No relevant configuration.
-
-=head1 DEPENDENCIES
-
-No relevant depedencies.
-
-=head1 INCOMPATIBILITIES
-
-No known incompatibilities.
+    If the program exited successfully, it will exit with a code of 0.
+    Otherwise, the execution was not successful.
 
 =head1 BUGS AND LIMITATIONS
 
-This program assumes a maximum of 8 trays and 24 slots.
-Manual alteration is required for anything more specific.
+    This program assumes a maximum of 8 trays and 24 slots.
+    Manual alteration is required for anything more specific.
 
 =head1 AUTHOR
 
-Jason Michael Runkle <jason.runkle@teradata.com>
-
-=head1 LICENSE AND COPYRIGHT
-
-No copyright information, independently supported.
+    Jason Michael Runkle <jason.runkle@teradata.com>
 
 =cut
-
-# Local Variables:
-#   mode: cperl
-#   cperl-indent-level: 4
-#   fill-column: 78
-#   indent-tabs-mode: nil
-#   c-indentation-style: bsd
-# End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

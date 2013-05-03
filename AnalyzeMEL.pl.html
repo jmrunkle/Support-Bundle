@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SupportBundle::AnalyzeMEL.pl - Analyzes a MEL for disk array troubleshooting</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body style="background-color: white">
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<p><a name="__index__"></a></p>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#version">VERSION</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#usage">USAGE</a></li>
+	<li><a href="#options">OPTIONS</a></li>
+	<li><a href="#exit_status">EXIT STATUS</a></li>
+	<li><a href="#bugs_and_limitations">BUGS AND LIMITATIONS</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<hr />
+<h1><a name="name">NAME</a></h1>
+<pre>
+    SupportBundle::AnalyzeMEL.pl - Analyzes a MEL for disk array troubleshooting</pre>
+<p>
+</p>
+<hr />
+<h1><a name="version">VERSION</a></h1>
+<pre>
+    This documentation refers to SupportBundle::AnalyzeMEL.pl version 1.0.0.0.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<pre>
+    This program parses through a Major Event Log (MEL) searching for critical
+    issues (such as URS conditions) or controller problems and prints them out in 
+    an ordered table form so that the reader can look through it easily.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="usage">USAGE</a></h1>
+<pre>
+    C&lt;perl AnalyzeMEL.pl [-n|-v|-?|majorEventLog.txt]&gt;</pre>
+<p>
+</p>
+<hr />
+<h1><a name="options">OPTIONS</a></h1>
+<dl>
+<dt><strong><a name="n_nohup" class="item"><code>-n</code>, <code>--nohup</code></a></strong></dt>
+
+<dd>
+<pre>
+    Run without user input and print to STDOUT</pre>
+</dd>
+<dt><strong><a name="v_version" class="item"><code>-v</code>, <code>--version</code></a></strong></dt>
+
+<dd>
+<pre>
+    Print version number and exit</pre>
+</dd>
+<dt><strong><a name="h_help" class="item"><code>-h</code>, <code>--help</code>, <code>-?</code></a></strong></dt>
+
+<dd>
+<pre>
+    Print usage information and exit</pre>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="exit_status">EXIT STATUS</a></h1>
+<pre>
+    If the program exited successfully, it will exit with a code of 0.
+    Otherwise, the execution was not successful.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="bugs_and_limitations">BUGS AND LIMITATIONS</a></h1>
+<pre>
+    This program assumes a maximum of 8 trays and 24 slots.
+    Manual alteration is required for anything more specific.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<pre>
+    Jason Michael Runkle &lt;jason.runkle@teradata.com&gt;</pre>
+
+</body>
+
+</html>
