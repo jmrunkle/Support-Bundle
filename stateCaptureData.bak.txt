@@ -6415,7 +6415,7 @@ chAll (Tick 1226418273) ==> 04/05/13-16:11:47 (GMT)
    3 Hst SAS    0 :  1 :  114 18843368956  4309 :  0 :  0     0          0     0
 -< 4 Drv SD     0 :  0 :    0          0     0 :  0 :  0     0          0     0
 
--> 
+-> luall 0
 
 .......Logical Unit..........:    :annel:Que ............IOs............: OldestCmd
     Devnum Location     Role :ORP : 0 1 :Dep  Qd  Open  Completed  Errs : Age(ms)   Attn Reason    

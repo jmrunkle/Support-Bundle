@@ -20,6 +20,9 @@ our $VERSION = '1.0.0.0';       # version number
 my $DEBUG = 1;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
 
+# use this to set debug mode command line arguments
+if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData.bak.txt'); }
+
 #-------------------------------------------------------------------------------
 
 # print_version - prints the version
@@ -41,7 +44,6 @@ sub print_usage_info {
 
 #-------------------------------------------------------------------------------
 
-if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData.txt'); }
 my $arg = $ARGV[0];    # $arg = command line argument
 
 # if the argument is "-v" or "--version" print version
@@ -105,6 +107,9 @@ my $time;
 #   on controller A and controller B respectively. Format is:
 #   $info_a{'t#,s##'}->{'type'=>type, 'orp'=>orp, 'count'=>count}
 my (%info_a,%info_b);
+
+# @errors_a, @errors_b contain arrays of the errors on controller A and B resp.
+my (@errors_a, @errors_b);
 
 # $chall, $luall, $a are flags indicating that we are in a chall or luall and
 #   controller A (else controller B)
@@ -228,6 +233,7 @@ while(<SCD>) {
                     'orp'   => $3,
                     'count' => $4
                 };
+                push(@errors_a, $4);
             }
             else
             {
@@ -236,6 +242,7 @@ while(<SCD>) {
                     'orp'   => $3,
                     'count' => $4
                 };
+                push(@errors_b, $4);
             }
         }
     }
@@ -244,6 +251,82 @@ close(SCD);
 print "Done.\n\n";
 
 #-------------------------------------------------------------------------------
+
+# sum - adds up all the elements of an array
+sub sum
+{
+    my $sum = 0;
+    $sum += $_ foreach(@_);
+    return $sum;
+}
+
+# mean - gets the average of all the elements in an array
+sub mean
+{
+    return sum(@_)/@_;
+}
+
+# stdev - gets the standard deviation of an array
+sub stdev
+{
+    my $mean = mean(@_);
+    my $sse = 0;
+    $sse += ($_ - $mean)*($_ - $mean) foreach(@_);
+    return sqrt($sse)/@_;
+}
+
+# print_outliers - prints out the possible outliers in the set of data
+sub print_outliers
+{
+    my %outliers;
+    if (@errors_a)
+    {
+        my $mean_a = mean(@errors_a);
+        my $stdev_a = stdev(@errors_a);
+        if ($stdev_a == 0) { $stdev_a = 1; }
+        foreach(keys %info_a)
+        {
+            my $count = $info_a{$_}->{'count'};
+            if ($count >= $mean_a + $stdev_a)
+            {
+                $outliers{$_} = $count;
+            }
+        }
+    }
+    if (@errors_b)
+    {
+        my $mean_b = mean(@errors_b);
+        my $stdev_b = stdev(@errors_b);
+        if ($stdev_b == 0) { $stdev_b = 1; }
+        foreach(keys %info_b)
+        {
+            my $count = $info_b{$_}->{'count'};
+            if ($count >= $mean_b + $stdev_b)
+            {
+                if (!$outliers{$_} || ($outliers{$_} && $count > $outliers{$_}))
+                {
+                    $outliers{$_} = $count;
+                }
+            }
+        }
+    }
+    if (%outliers)
+    {
+        print "Potential Outliers:\n";
+        for my $tray (0 .. 8)
+        {
+            for my $slot (1 .. 24)
+            {
+                my $ts = "t$tray,s$slot";
+                if ($outliers{$ts})
+                {
+                    print "  Drive in $ts has ",$outliers{$ts}," errors.\n";
+                }
+            }
+        }
+    }
+    else { print "\nNo outliers were found in the data.\n"; }
+}
 
 # print_controller_info
 sub print_controller_info
@@ -260,21 +343,38 @@ sub print_controller_info
             print "Controller B has been up $uptime_b days.\n";
         }
     }
+    return;
 }
 
 # print_luall - prints luall for controller A
 sub print_luall
 {
-    print substr($_, 0, 79),"\n" foreach(@luall_a);
-    print substr($_, 0, 79),"\n" foreach(@luall_b);
+    if (@luall_a)
+    {
+        print "Controller A:\n";
+        print substr($_, 0, 79),"\n" foreach(@luall_a);
+    }
+    if (@luall_b)
+    {
+        print "Controller B:\n";
+        print substr($_, 0, 79),"\n" foreach(@luall_b);
+    }
     return;
 }
 
 # print_chall - prints chall for controller A
 sub print_chall
 {
-    print substr($_, 0, 79),"\n" foreach(@chall_a);
-    print substr($_, 0, 79),"\n" foreach(@chall_b);
+    if (@chall_a)
+    {
+        print "Controller A:\n";
+        print substr($_, 0, 79),"\n" foreach(@chall_a);
+    }
+    if (@chall_b)
+    {
+        print "Controller B:\n";
+        print substr($_, 0, 79),"\n" foreach(@chall_b);
+    }
     return;
 }
 
@@ -324,51 +424,26 @@ sub print_luall_info
     return;
 }
 
-# print_drive_summary - prints the summary of all drive errors (it's crazy)
-sub print_drive_summary
-{
-    print "DRIVE SUMMARY:\n\n";
-    for my $tray (0 .. 8)
-    {
-        for my $slot (0 .. 24)
-        {
-            my $loca = "Tray $tray, Slot $slot";
-            # if ($drive_errors{$loca})
-            # {
-                # my $total_errors = 0;
-                # print "Drive in $loca has the following errors:\n";
-                # for my $desc (keys %{$drive_errors{$loca}})
-                # {
-                    # my $count = $drive_errors{$loca}->{$desc}->{'count'};
-                    # $total_errors += $count;
-                    # my $time = substr $drive_errors{$loca}->{$desc}->{'time'}, 11;
-                    # $desc = substr $desc, 13, 51;
-                    # printf("  %-5s %-51s%-20s\n", $count, $desc, $time);
-                # }
-                # print "TOTAL ERRORS: $total_errors\n";
-                # print '-'x79,"\n";
-            # }
-        }
-    }
-    return;
-}
-
 #-------------------------------------------------------------------------------
 
 print '-'x79,"\n";
 print_controller_info;
+print '-'x79,"\n";
+if (@errors_a || @errors_b)
+{
+    print_outliers;
+}
 print "\n";
-print_luall_info;
-print "\n";
-print_chall;
-print "\n";
-print_luall;
+if (%info_a || %info_b)
+{
+    print_luall_info;
+}
 
-my $input = 'yes';
+my $input = 'y';
 if (!$nohup)
 {
     print "\n",'-'x79,"\n";
-    print 'Print the drive summary (y/n)? [default y]  ';
+    print 'Print the full chall and luall outputs (y/n)? [default y]  ';
     $input = <STDIN>;
 }
 
@@ -378,7 +453,10 @@ if ($input =~ m/^n/xsim)
     exit 0;
 }
 print '-'x79,"\n";
-print_drive_summary;
+print "\n";
+print_chall;
+print "\n";
+print_luall;
 print "\n";
 
 1;
