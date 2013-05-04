@@ -21,7 +21,7 @@ my $DEBUG = 1;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
 
 # use this to set debug mode command line arguments
-if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData.bak.txt'); }
+if ($DEBUG) { @ARGV = ('stateCaptureData.bak.txt'); }
 
 #-------------------------------------------------------------------------------
 
@@ -61,7 +61,8 @@ if (
     print_usage_info;
     exit 0;
 # if the argument is "-h" or "-?" or "--help" print usage information
-} elsif (
+}
+elsif (
     $arg =~ m{^           # at start of string
             (-v|          # match '-v'
             --version)    # or '--version'
@@ -103,8 +104,8 @@ my (@chall0, @luall0);
 # $time tracks the uptime until the controller is determined
 my $time;
 
-# %info_a, %info_b contains a hash of a hash with the information from the luall
-#   on controller A and controller B respectively. Format is:
+# %info_a, %info_b contains a hash of a hash with the information from the
+#   luall on controller A and controller B respectively. Format is:
 #   $info_a{'t#,s##'}->{'type'=>type, 'orp'=>orp, 'count'=>count}
 my (%info_a,%info_b);
 
@@ -174,12 +175,12 @@ while(<SCD>) {
         {
             $time = int($1/5184000);
         }
-        elsif ($_ =~ m{^                              # match at start of line
-                       (\d+)                          # some digits (w/ bref)
-                       -                              # a hyphen
-                       ([AB])                         # 'A' or 'B' (with bref)
-                       \s+                            # 1 or more spaces
-                       (\d\d[.]\d\d[.]\d\d[.]\d\d)    # and ##.##.##.## (w/ bref)
+        elsif ($_ =~ m{^                            # match at start of line
+                       (\d+)                        # some digits (w/ bref)
+                       -                            # a hyphen
+                       ([AB])                       # 'A' or 'B' (with bref)
+                       \s+                          # 1 or more spaces
+                       (\d\d[.]\d\d[.]\d\d[.]\d\d)  # and ##.##.##.## (w/ bref)
                        }xsm)
         {
             $type = $1;             # set controller type (assumed same)
@@ -248,9 +249,23 @@ while(<SCD>) {
     }
 }
 close(SCD);
-print "Done.\n\n";
+print "Done.\n";
 
 #-------------------------------------------------------------------------------
+
+# print_controller_info
+sub print_controller_info
+{
+    if ($type) 
+    {
+        print "CONTROLLER INFO:\n\n";
+        print "Controllers are $type"."s with $fw firmware.\n\n";
+        if ($uptime_a) { print "Controller A has been up $uptime_a days.\n"; }
+        if ($uptime_b) { print "Controller B has been up $uptime_b days.\n"; }
+        print '-'x79,"\n";
+    }
+    return;
+}
 
 # sum - adds up all the elements of an array
 sub sum
@@ -287,10 +302,7 @@ sub print_outliers
         foreach(keys %info_a)
         {
             my $count = $info_a{$_}->{'count'};
-            if ($count >= $mean_a + $stdev_a)
-            {
-                $outliers{$_} = $count;
-            }
+            if ($count >= $mean_a + $stdev_a) { $outliers{$_} = $count; }
         }
     }
     if (@errors_b)
@@ -303,47 +315,56 @@ sub print_outliers
             my $count = $info_b{$_}->{'count'};
             if ($count >= $mean_b + $stdev_b)
             {
-                if (!$outliers{$_} || ($outliers{$_} && $count > $outliers{$_}))
-                {
-                    $outliers{$_} = $count;
-                }
+                if (!$outliers{$_} || 
+                   ($outliers{$_} && $count > $outliers{$_}))
+                { $outliers{$_} = $count; }
             }
         }
     }
     if (%outliers)
     {
-        print "Potential Outliers:\n";
+        print "POTENTIAL OUTLIERS:\n\n";
         for my $tray (0 .. 8)
         {
             for my $slot (1 .. 24)
             {
                 my $ts = "t$tray,s$slot";
                 if ($outliers{$ts})
-                {
-                    print "  Drive in $ts has ",$outliers{$ts}," errors.\n";
-                }
+                { print "  Drive in $ts has ",$outliers{$ts}," errors.\n"; }
             }
         }
     }
     else { print "\nNo outliers were found in the data.\n"; }
+    print '-'x79,"\n";
 }
 
-# print_controller_info
-sub print_controller_info
+sub print_orp_errors
 {
-    if ($type) 
+    my $no_orp_errors = 1;
+    print "ORP ERRORS:\n\n";
+    for my $tray (0 .. 8)
     {
-        print "Controllers are $type"."s with $fw firmware.\n\n";
-        if ($uptime_a)
+        for my $slot (1 .. 24)
         {
-            print "Controller A has been up $uptime_a days.\n";
-        }
-        if ($uptime_b)
-        {
-            print "Controller B has been up $uptime_b days.\n";
+            my $ts = "t$tray,s$slot";
+            if ($info_a{$ts} && $info_a{$ts}->{'orp'} ne '+++')
+            { 
+                $no_orp_errors = 0;
+                print "$ts has A: ORP = ",$info_a{$ts}->{'orp'},
+                ", B: ORP = ",
+                ($info_b{$ts} ? $info_b{$ts}->{'orp'} : 'N/A'),"\n";
+            }
+            elsif ($info_b{$ts} && $info_b{$ts}->{'orp'} ne '+++')
+            {
+                $no_orp_errors = 0;
+                print "$ts has A: ORP = ",
+                ($info_a{$ts} ? $info_a{$ts}->{'orp'} : 'N/A'),
+                ", B: ORP = ",$info_b{$ts}->{'orp'},"\n";
+            }
         }
     }
-    return;
+    if ($no_orp_errors) { print "No ORP errors found.\n"; }
+    print '-'x79,"\n";
 }
 
 # print_luall - prints luall for controller A
@@ -352,12 +373,12 @@ sub print_luall
     if (@luall_a)
     {
         print "Controller A:\n";
-        print substr($_, 0, 79),"\n" foreach(@luall_a);
+        print "$_\n" foreach(@luall_a);
     }
     if (@luall_b)
     {
         print "Controller B:\n";
-        print substr($_, 0, 79),"\n" foreach(@luall_b);
+        print "$_\n" foreach(@luall_b);
     }
     return;
 }
@@ -368,12 +389,12 @@ sub print_chall
     if (@chall_a)
     {
         print "Controller A:\n";
-        print substr($_, 0, 79),"\n" foreach(@chall_a);
+        print "$_\n" foreach(@chall_a);
     }
     if (@chall_b)
     {
         print "Controller B:\n";
-        print substr($_, 0, 79),"\n" foreach(@chall_b);
+        print "$_\n" foreach(@chall_b);
     }
     return;
 }
@@ -382,8 +403,10 @@ sub print_chall
 sub print_luall_info
 {
     print ' /','-'x48,'\\',"\n";
-    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",'Drive','Drive','ORP','ORP','Errors','Errors');
-    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",'Position','Type',' A ',' B ',' on A ',' on B ');
+    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",
+            'Drive','Drive','ORP','ORP','Errors','Errors');
+    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",
+            'Position','Type',' A ',' B ',' on A ',' on B ');
     print ' |','-'x48,,'|',"\n";
     for my $tray (0 .. 8)
     {
@@ -407,15 +430,18 @@ sub print_luall_info
             {
                 if ($orp_a && $orp_b)
                 {
-                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",$ts,$drive_type,$orp_a,$orp_b,$count_a,$count_b);
+                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",
+                    $ts,$drive_type,$orp_a,$orp_b,$count_a,$count_b);
                 }
                 elsif ($orp_a)
                 {
-                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",$ts,$drive_type,$orp_a,'N/A',$count_a,'N/A');
+                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",
+                    $ts,$drive_type,$orp_a,'N/A',$count_a,'N/A');
                 }
                 elsif ($orp_b)
                 {
-                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",$ts,$drive_type,'N/A',$orp_b,'N/A',$count_b);
+                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",
+                    $ts,$drive_type,'N/A',$orp_b,'N/A',$count_b);
                 }
             }
         }
@@ -427,15 +453,11 @@ sub print_luall_info
 #-------------------------------------------------------------------------------
 
 print '-'x79,"\n";
-print_controller_info;
-print '-'x79,"\n";
-if (@errors_a || @errors_b)
-{
-    print_outliers;
-}
-print "\n";
+if ($type) { print_controller_info; }
+if (@errors_a || @errors_b) { print_outliers; }
 if (%info_a || %info_b)
 {
+    print_orp_errors;
     print_luall_info;
 }
 
