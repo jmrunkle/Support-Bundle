@@ -3,7 +3,7 @@
 ################################################################################
 # AnalyzeSCD.pl - analyzes the stateCaptureData for disk array troubleshooting
 # RCS Keywords:
-#     $Date: 2013-05-02 (Thr, 2 May 2013) $
+#     $Date: 2013-05-03 (Fri, 3 May 2013) $
 #   $Source: /home/AnalyzeSCD.pl $
 #   $Author: jr186037 $
 # $Revision: 1.0.0.0 $
@@ -87,128 +87,241 @@ print "\nReading stateCaptureData... ";
 open(SCD, "<", "$arg") or die("Could not open file: $arg");
 print "Done.\nBuilding data structures... ";
 
-# @all_errors holds all the errors in the array regardless of type
-my @all_errors = ();
+# $uptime_a, $uptime_b, $type, $fw_a, $fw_b are the constants holding the 
+#   controllers uptime, type, and fw
+my ($uptime_a, $uptime_b, $type, $fw);
 
-# @current_error holds the current error information in the following format:
-# [ 1. Date, 2. Description, 3. Type, 4. Location ]
-my @current_error = ();
+# @luall_a, @luall_b, @chall_a, @chall_b contain the lines for luall/chall on 
+#   controller A and B resptively
+my (@luall_a, @luall_b, @chall_a, @chall_b);
 
-# %drive_errors holds a hash of all the drive errors in the following format:
-# $drive_errors{"location"}->{"description"}->('time'=>time,'count'=>count)
-my %drive_errors = ();
+# @chall0 and @luall0 are accumulators for the while loop
+my (@chall0, @luall0);
 
-# @controller_timeline holds an array summary of major controller events.
-# Format is: [ 1. Date, 2. Description, 3. Location ]
-my @controller_timeline = ();
+# $time tracks the uptime until the controller is determined
+my $time;
 
-# @urs_timeline holds an array summary of URS events.
-# Format is: [ 1. Date, 2. Description, 3. Location ]
-my @urs_timeline = ();
+# %info_a, %info_b contains a hash of a hash with the information from the luall
+#   on controller A and controller B respectively. Format is:
+#   $info_a{'t#,s##'}->{'type'=>type, 'orp'=>orp, 'count'=>count}
+my (%info_a,%info_b);
 
-# $first is a constant which indicates if this is the first pass
-my $first = 1;
+# $chall, $luall, $a are flags indicating that we are in a chall or luall and
+#   controller A (else controller B)
+my ($chall, $luall, $a);
 
 while(<SCD>) {
     chomp;
-    # Date indicates a new error
-    if ($_ =~ m/^Date/xsim)
-    {
-        # if not the first error
-        if (!$first)
+    # See if we are at a boundary where we need to switch.
+    if ($_ =~ m{->          # match '->'
+                \s          # a space
+                chall       # 'chall'
+                \s          # another space
+                0           # and a zero
+                }xsm)       # should catch '-> chall 0'
+    { 
+        $chall = 1;         # turn the chall flag on
+        @chall0 = ();       # reset chall0 accumulator
+    }             
+    elsif ($_ =~ m{->       # mathc '->'
+                   \s       # a space
+                   luall    # 'luall'
+                   \s       # another space
+                   0        # and a zero
+                   }xsm)    # should catch '-> luall 0'
+    { 
+        $chall = 0;         # turn off chall flag
+        if ($a)
         {
-            # extract some useful bindings for simplicity
-            my ($time, $desc, $type, $loca) = @current_error;
-            # if this is a drive component
-            if ($type =~ m/Drive/xsm)
+            @chall_a = @chall0;
+        }
+        else
+        {
+            @chall_b = @chall0;
+        }
+        $luall = 1;         # turn luall flag on
+        @luall0 = ();       # reset luall0 accumulator
+    }     
+    elsif ($_ =~ m{->            # mathc '->'
+                   \s            # a space
+                   iditnall      # 'iditnall'
+                   \s            # another space
+                   0             # and a zero
+                   }xsm)    # should catch '-> iditnall 0'
+    { 
+        $luall = 0;     # turn off luall flag
+        if ($a)
+        {
+            @luall_a = @luall0;
+        }
+        else
+        {
+            @luall_b = @luall0;
+        }
+    }
+    if ($chall)
+    {
+        push(@chall0, $_); # record the line
+        if ($_ =~ m{Tick        # match 'Tick'
+                    \s          # a space
+                    (\d+)       # a series of digits (with backref)
+                    }xsm)       # should catch 'Tick ##########'
+        {
+            $time = int($1/5184000);
+        }
+        elsif ($_ =~ m{^                              # match at start of line
+                       (\d+)                          # some digits (w/ bref)
+                       -                              # a hyphen
+                       ([AB])                         # 'A' or 'B' (with bref)
+                       \s+                            # 1 or more spaces
+                       (\d\d[.]\d\d[.]\d\d[.]\d\d)    # and ##.##.##.## (w/ bref)
+                       }xsm)
+        {
+            $type = $1;             # set controller type (assumed same)
+            $a = $2 =~ m/A/xsm;     # set a flag if controller A
+            $fw = $3;               # set firmware version variable
+            if ($a)
             {
-                $loca = substr $loca, 20;    # remove 'Component location : '
-                # if this error has been seen before
-                if ($drive_errors{$loca} &&
-                    $drive_errors{$loca}->{$desc})
-                {
-                    $drive_errors{$loca}->{$desc}->{'count'} += 1;
-                # or if it has not been seen before
-                } else
-                {
-                    # set time of most recent occurence
-                    $drive_errors{$loca}->{$desc}->{'time'} = $time;
-                    # set counts of this specific error to 1
-                    $drive_errors{$loca}->{$desc}->{'count'} = 1;
-                }
+                $uptime_a = $time;
             }
-            # if this is a special controller error -> controller timeline
-            if ($type =~ m/Controller/xsm &&
-                $desc =~ m{(start-of-day|    # start of day events
-                            parity|          # memory parity errors
-                            persistent|      # persistent issues
-                            reset)           # controller resets
-                            }xsim)
+            else
             {
-                push(@controller_timeline, [$time, $desc, $loca]);
-            }
-            # if this is a URS condition -> urs timeline
-            if ($desc =~ m/Unreadable/xsm)
-            {
-                push(@urs_timeline, [$time, $desc, $loca]);
+                $uptime_b = $time;
             }
         }
-        push(@all_errors, [@current_error]);    # add error to all errors
-        @current_error = ($_);                  # start new error
-    # also track Description, Component type, and Component location lines
-    } elsif ($_ =~ m{^
-                     (Description|      # 'Description' line
-                     Component)         # 'Component (type|location)'
-                     }xsm)
+    }
+    elsif ($luall)
     {
-        $first = 0;                             # flag no longer first
-        push(@current_error, $_);               # append element to error
+        push(@luall0, $_); # record the line
+        if ($_ =~ m{^               # match at start of line
+                    [\sd><]+        # one or more spaces or d's or >'s or <'s
+                    \w+             # non-space(s)
+                    \s+             # space(s)
+                    (t\d,s\d+)      # 't#,s##' (w/ backref)
+                    \s+             # space(s)
+                    (SASdr|FCdr)    # 'SASdr' or 'FCdr' (w/ backref)
+                    \s+             # space(s)
+                    :               # a colon
+                    ([+\-d]+)       # a combo of '+', '-', and 'd'
+                    \s+             # space(s)
+                    :               # a colon
+                    \s+             # space(s)
+                    .               # any character (should be * or +)
+                    \s+             # space(s)
+                    .               # any character (should be * or +)
+                    \s+             # space(s)
+                    :               # a colon
+                    \s+\d+          # space(s) followed by digit(s)
+                    \s+\d+          # space(s) followed by digit(s)
+                    \s+\d+          # space(s) followed by digit(s)
+                    \s+\d+          # space(s) followed by digit(s)
+                    \s+             # space(s)
+                    (\d+)           # digit(s) (w/ backref)
+                    }xsm)
+        # should match: ' 00010000 t0,s1 FCdr :+++ : + * : 16 0 0 82337 4'
+
+        {
+            if ($a)
+            {
+                $info_a{$1} = {
+                    'type'  => $2,
+                    'orp'   => $3,
+                    'count' => $4
+                };
+            }
+            else
+            {
+                $info_b{$1} = {
+                    'type'  => $2,
+                    'orp'   => $3,
+                    'count' => $4
+                };
+            }
+        }
     }
 }
-push(@all_errors, [@current_error]);            # add the last error
 close(SCD);
 print "Done.\n\n";
 
 #-------------------------------------------------------------------------------
 
-# print_urs_timeline - prints the URS summary timeline
-sub print_urs_timeline
+# print_controller_info
+sub print_controller_info
 {
-    print "\nURS SUMMARY:\n\n";
-    if (@urs_timeline)
+    if ($type) 
     {
-        foreach (@urs_timeline) 
+        print "Controllers are $type"."s with $fw firmware.\n\n";
+        if ($uptime_a)
         {
-            my $time = substr @$_[0], 11;
-            my $desc = substr @$_[1], 30;
-            my $vol = substr @$_[2], 20;
-            printf("%-24s%-42s%-12s\n", $time, "URS".$desc, $vol);
+            print "Controller A has been up $uptime_a days.\n";
         }
-    } else
-    {
-        print "No URS events!\n"
+        if ($uptime_b)
+        {
+            print "Controller B has been up $uptime_b days.\n";
+        }
     }
 }
 
-# print_controller_timeline - prints the controller summary timeline
-sub print_controller_timeline
+# print_luall - prints luall for controller A
+sub print_luall
 {
-    print "\nCONTROLLER SUMMARY:\n\n";
-    if (@controller_timeline)
+    print substr($_, 0, 79),"\n" foreach(@luall_a);
+    print substr($_, 0, 79),"\n" foreach(@luall_b);
+    return;
+}
+
+# print_chall - prints chall for controller A
+sub print_chall
+{
+    print substr($_, 0, 79),"\n" foreach(@chall_a);
+    print substr($_, 0, 79),"\n" foreach(@chall_b);
+    return;
+}
+
+# print_luall_info - prints the luall information
+sub print_luall_info
+{
+    print ' /','-'x48,'\\',"\n";
+    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",'Drive','Drive','ORP','ORP','Errors','Errors');
+    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",'Position','Type',' A ',' B ',' on A ',' on B ');
+    print ' |','-'x48,,'|',"\n";
+    for my $tray (0 .. 8)
     {
-        foreach (@controller_timeline)
+        for my $slot (1 .. 24)
         {
-            my $time = substr @$_[0], 11;
-            my $desc = substr @$_[1], 13;
-            my $loca = substr @$_[2], 20;
-            my $controller = ($loca =~ m/slot [A0]/xsim ? 'Controller A': 'Controller B');
-            printf("%-24s%-42s%-12s\n", $time, $desc, $controller);
+            my $ts = "t$tray,s$slot";
+            my ($drive_type, $orp_a, $count_a, $orp_b, $count_b);
+            if ($info_a{$ts})
+            {
+                $drive_type = $info_a{$ts}->{'type'};
+                $orp_a = $info_a{$ts}->{'orp'};
+                $count_a = $info_a{$ts}->{'count'};
+            }
+            if ($info_b{$ts})
+            {
+                $drive_type = $info_b{$ts}->{'type'};
+                $orp_b = $info_b{$ts}->{'orp'};
+                $count_b = $info_b{$ts}->{'count'};
+            }
+            if ($drive_type)
+            {
+                if ($orp_a && $orp_b)
+                {
+                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",$ts,$drive_type,$orp_a,$orp_b,$count_a,$count_b);
+                }
+                elsif ($orp_a)
+                {
+                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",$ts,$drive_type,$orp_a,'N/A',$count_a,'N/A');
+                }
+                elsif ($orp_b)
+                {
+                    printf(" | %-8s | %-5s | %3s | %-3s | %-6s | %-6s |\n",$ts,$drive_type,'N/A',$orp_b,'N/A',$count_b);
+                }
+            }
         }
-        print "\n";
-    } else
-    {
-        print "No major controller events!\n";
     }
+    print ' \\','-'x48,'/',"\n";
+    return;
 }
 
 # print_drive_summary - prints the summary of all drive errors (it's crazy)
@@ -220,31 +333,36 @@ sub print_drive_summary
         for my $slot (0 .. 24)
         {
             my $loca = "Tray $tray, Slot $slot";
-            if ($drive_errors{$loca})
-            {
-                my $total_errors = 0;
-                print "Drive in $loca has the following errors:\n";
-                for my $desc (keys %{$drive_errors{$loca}})
-                {
-                    my $count = $drive_errors{$loca}->{$desc}->{'count'};
-                    $total_errors += $count;
-                    my $time = substr $drive_errors{$loca}->{$desc}->{'time'}, 11;
-                    $desc = substr $desc, 13, 51;
-                    printf("  %-5s %-51s%-20s\n", $count, $desc, $time);
-                }
-                print "TOTAL ERRORS: $total_errors\n";
-                print '-'x79,"\n";
-            }
+            # if ($drive_errors{$loca})
+            # {
+                # my $total_errors = 0;
+                # print "Drive in $loca has the following errors:\n";
+                # for my $desc (keys %{$drive_errors{$loca}})
+                # {
+                    # my $count = $drive_errors{$loca}->{$desc}->{'count'};
+                    # $total_errors += $count;
+                    # my $time = substr $drive_errors{$loca}->{$desc}->{'time'}, 11;
+                    # $desc = substr $desc, 13, 51;
+                    # printf("  %-5s %-51s%-20s\n", $count, $desc, $time);
+                # }
+                # print "TOTAL ERRORS: $total_errors\n";
+                # print '-'x79,"\n";
+            # }
         }
     }
+    return;
 }
 
 #-------------------------------------------------------------------------------
 
 print '-'x79,"\n";
-print_urs_timeline;
-print "\n",'-'x79,"\n";
-print_controller_timeline;
+print_controller_info;
+print "\n";
+print_luall_info;
+print "\n";
+print_chall;
+print "\n";
+print_luall;
 
 my $input = 'yes';
 if (!$nohup)
