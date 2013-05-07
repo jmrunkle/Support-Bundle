@@ -1,0 +1,2451 @@
+PROFILE FOR STORAGE ARRAY: DAMC001-1-18 (Wed Feb 06 16:28:22 CET 2013)
+
+
+SUMMARY------------------------------
+
+
+   Number of controllers:              2        
+                                                
+   High performance tier controllers:  Enabled  
+                                                
+   Number of volume groups:            12       
+                                                
+   RAID 6:                             Enabled  
+                                                
+
+   Total number of volumes used:     13   
+      Number of standard volumes:    12   
+      Number of access volumes:      1    
+   Total number of volumes allowed:  256  
+
+
+   Drive Limit Management:                    
+      Number of drive slots discovered:  24   
+      Number of drive slots allowed:     192  
+
+
+   Solid State Disk Support:     Enabled  
+      Number of drives used:     0        
+      Number of drives allowed:  192      
+
+
+   Number of drives:           24                               
+   Mixed drive types:          Disabled                         
+   Current media type(s):      Hard Disk Drive (24)             
+   Current interface type(s):  Serial Attached SCSI (SAS) (24)  
+                                                                
+   Total hot spare drives:     0                                
+      Standby:                 0                                
+      In use:                  0                                
+
+
+   SafeStore Drive Security:  Enabled  
+   Security key identifier:   None     
+
+
+   Security key management:  Local  
+
+
+   Number of volumes allowed per partition:  256  
+
+
+   Access volume:    LUN 31 (see Mappings section for details)  
+   Default host OS:  Linux (Host OS index 6)                    
+
+
+   Current configuration                                     
+      Firmware version:                    07.75.36.30       
+      NVSRAM version:                      N26X0-770833-TC4  
+      AMW version:                         10.75.G3.27       
+   Pending configuration                                     
+      Staged firmware download supported:  Yes               
+      Firmware version:                    None              
+      NVSRAM version:                      None              
+      Transferred on:                      None              
+                                                             
+
+
+   NVSRAM configured for batteries:          No  
+                                                 
+   Start cache flushing at (in percentage):  80  
+   Stop cache flushing at (in percentage):   60  
+   Cache block size (in KB):                 16  
+
+
+   Media scan frequency (in days):            7                                 
+   Failover alert delay (in minutes):         5                                 
+                                                                                
+   Feature enable identifier:                 3033313835203033303838204DCBD2A6  
+                                                                                
+   Feature pack:                              Teradata                          
+   Feature pack submodel ID:                  134                               
+                                                                                
+   Storage array world-wide identifier (ID):  60080E5000232878000000004DCBD2A6  
+                                                                                
+CONTROLLERS------------------------------
+   Number of controllers: 2
+
+      Controller in Tray 0, Slot A
+       
+
+         Status:                      Online                        
+                                                                    
+         Current configuration                                      
+            Firmware version:         07.75.36.30                   
+               Appware version:       07.75.36.30                   
+               Bootware version:      07.75.36.30                   
+            NVSRAM version:           N26X0-770833-TC4              
+         Pending configuration                                      
+            Firmware version:         None                          
+               Appware version:       None                          
+               Bootware version:      None                          
+            NVSRAM version:           None                          
+            Transferred on:           None                          
+         Model name:                  2660                          
+         Board ID:                    2660                          
+         Submodel ID:                 134                           
+         Product ID:                  INF-01-00                     
+         Revision:                    0775                          
+         Replacement part number:     349-4780301                   
+         Part number:                 45234-06                      
+         Serial number:               SV10403088                    
+         Vendor:                      LSI                           
+         Date of manufacture:         January 20, 2011              
+         Trunking supported:          No                            
+                                                                    
+         Data Cache                                                 
+            Total present:            1744 MB                       
+            Total used:               1744 MB                       
+         Processor cache:                                           
+            Total present:            304 MB                        
+         Host Interface Board                                       
+            Status:                   Optimal                       
+            Location:                 Slot 1                        
+            Type:                     SAS                           
+            Number of ports:          2                             
+            Board ID:                 0601                          
+            Replacement part number:  L2-25065-13                   
+            Part number:              PN L2-25065-13                
+            Serial number:            SN SV04002890                 
+            Vendor:                   VN LSI                        
+            Date of manufacture:      September 1, 2010             
+         Date/Time:                   Wed Feb 06 16:28:35 CET 2013  
+
+      Associated Volumes (* = Preferred Owner): 
+         0*, 2*, 4*, 6*, 8*, 10*
+
+
+      Controller DNS/Network name:   target    
+         Remote login:               Enabled*  
+
+
+      Ethernet port:              1                  
+         Link status:             Up                 
+         MAC address:             00:80:e5:23:24:46  
+         Negotiation mode:        Auto-negotiate     
+            Port speed:           1000 Mbps          
+            Duplex mode:          Full duplex        
+         Network configuration:   Static             
+         IP address:              39.80.8.18         
+         Subnet mask:             255.240.0.0        
+         Gateway:                 0.0.0.0            
+                                                     
+      Ethernet port:              2                  
+         Link status:             Down               
+         MAC address:             00:80:e5:23:24:47  
+         Negotiation mode:        Auto-negotiate     
+            Port speed:           Unknown            
+            Duplex mode:          Half duplex        
+         Network configuration:   Static             
+         IP address:              192.168.129.101    
+         Subnet mask:             255.255.255.0      
+         Gateway:                 0.0.0.0            
+                                                     
+      *NVSRAM setting, may be overridden by DHCP/Bootp server setting
+
+
+      Drive interface:        SAS     
+         Channel:             1       
+         Port:                1       
+            Status:           Up      
+         Maximum data rate:   6 Gbps  
+         Current data rate:   6 Gbps  
+
+      Drive interface:        SAS     
+         Channel:             2       
+         Port:                2       
+            Status:           Up      
+         Maximum data rate:   6 Gbps  
+         Current data rate:   6 Gbps  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   1                                   
+         Port:                      1                                   
+            Status:                 Up                                  
+            World-wide identifier:  50:08:0e:52:32:44:60:00             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         6 Gbps                              
+         Part type:                 LSISAS2116    revision 100,664,576  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   2                                   
+         Port:                      2                                   
+            Status:                 Up                                  
+            World-wide identifier:  50:08:0e:52:32:44:60:04             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         6 Gbps                              
+         Part type:                 LSISAS2116    revision 100,664,576  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   3                                   
+         Port:                      3                                   
+            Status:                 Up                                  
+            World-wide identifier:  50:08:0e:52:32:44:60:10             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         6 Gbps                              
+         Part type:                 LSISAS2008    revision 100,664,576  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   4                                   
+         Port:                      4                                   
+            Status:                 Down                                
+            World-wide identifier:  50:08:0e:52:32:44:60:14             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         Not available                       
+         Part type:                 LSISAS2008    revision 100,664,576  
+
+      Controller in Tray 0, Slot B
+       
+
+         Status:                      Online                        
+                                                                    
+         Current configuration                                      
+            Firmware version:         07.75.36.30                   
+               Appware version:       07.75.36.30                   
+               Bootware version:      07.75.36.30                   
+            NVSRAM version:           N26X0-770833-TC4              
+         Pending configuration                                      
+            Firmware version:         None                          
+               Appware version:       None                          
+               Bootware version:      None                          
+            NVSRAM version:           None                          
+            Transferred on:           None                          
+         Model name:                  2660                          
+         Board ID:                    2660                          
+         Submodel ID:                 134                           
+         Product ID:                  INF-01-00                     
+         Revision:                    0775                          
+         Replacement part number:     349-4780301                   
+         Part number:                 45234-06                      
+         Serial number:               SV10403185                    
+         Vendor:                      LSI                           
+         Date of manufacture:         January 20, 2011              
+         Trunking supported:          No                            
+                                                                    
+         Data Cache                                                 
+            Total present:            1744 MB                       
+            Total used:               1744 MB                       
+         Processor cache:                                           
+            Total present:            304 MB                        
+         Host Interface Board                                       
+            Status:                   Optimal                       
+            Location:                 Slot 1                        
+            Type:                     SAS                           
+            Number of ports:          2                             
+            Board ID:                 0601                          
+            Replacement part number:  L2-25065-13                   
+            Part number:              PN L2-25065-13                
+            Serial number:            SN SV04002986                 
+            Vendor:                   VN LSI                        
+            Date of manufacture:      September 1, 2010             
+         Date/Time:                   Wed Feb 06 16:28:23 CET 2013  
+
+      Associated Volumes (* = Preferred Owner): 
+         1*, 3*, 5*, 7*, 9*, 11*
+
+
+      Controller DNS/Network name:   target    
+         Remote login:               Enabled*  
+
+
+      Ethernet port:              1                  
+         Link status:             Up                 
+         MAC address:             00:80:e5:23:28:78  
+         Negotiation mode:        Auto-negotiate     
+            Port speed:           1000 Mbps          
+            Duplex mode:          Full duplex        
+         Network configuration:   Static             
+         IP address:              39.96.8.18         
+         Subnet mask:             255.240.0.0        
+         Gateway:                 0.0.0.0            
+                                                     
+      Ethernet port:              2                  
+         Link status:             Down               
+         MAC address:             00:80:e5:23:28:79  
+         Negotiation mode:        Auto-negotiate     
+            Port speed:           Unknown            
+            Duplex mode:          Half duplex        
+         Network configuration:   Static             
+         IP address:              192.168.129.102    
+         Subnet mask:             255.255.255.0      
+         Gateway:                 0.0.0.0            
+                                                     
+      *NVSRAM setting, may be overridden by DHCP/Bootp server setting
+
+
+      Drive interface:        SAS     
+         Channel:             1       
+         Port:                1       
+            Status:           Up      
+         Maximum data rate:   6 Gbps  
+         Current data rate:   6 Gbps  
+
+      Drive interface:        SAS     
+         Channel:             2       
+         Port:                2       
+            Status:           Up      
+         Maximum data rate:   6 Gbps  
+         Current data rate:   6 Gbps  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   1                                   
+         Port:                      1                                   
+            Status:                 Down                                
+            World-wide identifier:  50:08:0e:52:32:87:80:00             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         Not available                       
+         Part type:                 LSISAS2116    revision 100,664,576  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   2                                   
+         Port:                      2                                   
+            Status:                 Up                                  
+            World-wide identifier:  50:08:0e:52:32:87:80:04             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         6 Gbps                              
+         Part type:                 LSISAS2116    revision 100,664,576  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   3                                   
+         Port:                      3                                   
+            Status:                 Up                                  
+            World-wide identifier:  50:08:0e:52:32:87:80:10             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         6 Gbps                              
+         Part type:                 LSISAS2008    revision 100,664,576  
+
+      Host interface:               SAS                                 
+         Host Interface Card(HIC):                                      
+         Channel:                   4                                   
+         Port:                      4                                   
+            Status:                 Up                                  
+            World-wide identifier:  50:08:0e:52:32:87:80:14             
+         Maximum data rate:         6 Gbps                              
+         Current data rate:         6 Gbps                              
+         Part type:                 LSISAS2008    revision 100,664,576  
+
+VOLUME GROUPS------------------------------
+
+   Number of volume groups: 12
+
+
+   Name:                     1                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot A             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         0          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                               
+            0        1 [mirrored pair with drive at tray 0, slot 2]  
+            0        2 [mirrored pair with drive at tray 0, slot 1]  
+
+
+
+
+   Name:                     2                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot B             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         1          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                               
+            0        3 [mirrored pair with drive at tray 0, slot 4]  
+            0        4 [mirrored pair with drive at tray 0, slot 3]  
+
+
+
+
+   Name:                     3                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot A             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         2          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                               
+            0        5 [mirrored pair with drive at tray 0, slot 6]  
+            0        6 [mirrored pair with drive at tray 0, slot 5]  
+
+
+
+
+   Name:                     4                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot B             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         3          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                               
+            0        7 [mirrored pair with drive at tray 0, slot 8]  
+            0        8 [mirrored pair with drive at tray 0, slot 7]  
+
+
+
+
+   Name:                     5                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot A             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         4          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                
+            0        9 [mirrored pair with drive at tray 0, slot 10]  
+            0        10 [mirrored pair with drive at tray 0, slot 9]  
+
+
+
+
+   Name:                     6                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot B             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         5          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                 
+            0        11 [mirrored pair with drive at tray 0, slot 12]  
+            0        12 [mirrored pair with drive at tray 0, slot 11]  
+
+
+
+
+   Name:                     7                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot A             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         6          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                 
+            0        13 [mirrored pair with drive at tray 0, slot 14]  
+            0        14 [mirrored pair with drive at tray 0, slot 13]  
+
+
+
+
+   Name:                     8                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot B             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         7          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                 
+            0        15 [mirrored pair with drive at tray 0, slot 16]  
+            0        16 [mirrored pair with drive at tray 0, slot 15]  
+
+
+
+
+   Name:                     9                                
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot A             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         8          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                 
+            0        17 [mirrored pair with drive at tray 0, slot 18]  
+            0        18 [mirrored pair with drive at tray 0, slot 17]  
+
+
+
+
+   Name:                     10                               
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot B             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         9          278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                 
+            0        19 [mirrored pair with drive at tray 0, slot 20]  
+            0        20 [mirrored pair with drive at tray 0, slot 19]  
+
+
+
+
+   Name:                     11                               
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot A             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         10         278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                 
+            0        21 [mirrored pair with drive at tray 0, slot 22]  
+            0        22 [mirrored pair with drive at tray 0, slot 21]  
+
+
+
+
+   Name:                     12                               
+                                                              
+      Status:                Optimal                          
+                                                              
+      Capacity:              278.896 GB                       
+      RAID level:            1                                
+                                                              
+      Media type:            Hard Disk Drive                  
+      Interface type:        Serial Attached SCSI (SAS)       
+      Tray loss protection:  No                               
+                                                              
+      Security Capable:      Yes, Full Disk Encryption (FDE)  
+      Secure:                No                               
+                                                              
+      Current owner:         Controller in slot B             
+
+
+      Associated volumes and free capacity
+
+
+         Volume        Capacity  
+         11         278.896 GB   
+                                 
+
+
+      Associated drives - present (in piece order)
+
+
+         Tray     Slot                                                 
+            0        23 [mirrored pair with drive at tray 0, slot 24]  
+            0        24 [mirrored pair with drive at tray 0, slot 23]  
+
+
+
+STANDARD VOLUMES------------------------------
+
+SUMMARY
+
+   Number of standard volumes: 12
+
+   See other Volumes sub-tabs for premium feature information.
+
+
+   NAME  STATUS   CAPACITY    RAID LEVEL  VOLUME GROUP  LUN  ACCESSIBLE BY  MEDIA TYPE       INTERFACE TYPE              
+   0     Optimal  278.896 GB  1           1             0    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   1     Optimal  278.896 GB  1           2             1    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   2     Optimal  278.896 GB  1           3             2    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   3     Optimal  278.896 GB  1           4             3    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   4     Optimal  278.896 GB  1           5             4    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   5     Optimal  278.896 GB  1           6             5    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   6     Optimal  278.896 GB  1           7             6    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   7     Optimal  278.896 GB  1           8             7    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   8     Optimal  278.896 GB  1           9             8    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   9     Optimal  278.896 GB  1           10            9    Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   10    Optimal  278.896 GB  1           11            10   Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+   11    Optimal  278.896 GB  1           12            11   Default Group  Hard Disk Drive  Serial Attached SCSI (SAS)  
+
+DETAILS
+
+
+   Volume name:                      0                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:24:46:00:00:02:86:4d:cb:de:2c  
+      Subsystem ID (SSID):           0                                                
+      Associated volume group:       1                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           0                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot A                             
+      Current owner:                 Controller in slot A                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      1                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:28:78:00:00:02:a0:4d:cb:dd:d4  
+      Subsystem ID (SSID):           1                                                
+      Associated volume group:       2                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           1                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot B                             
+      Current owner:                 Controller in slot B                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      2                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:24:46:00:00:02:8a:4d:cb:de:46  
+      Subsystem ID (SSID):           2                                                
+      Associated volume group:       3                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           2                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot A                             
+      Current owner:                 Controller in slot A                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      3                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:28:78:00:00:02:a4:4d:cb:dd:e8  
+      Subsystem ID (SSID):           3                                                
+      Associated volume group:       4                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           3                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot B                             
+      Current owner:                 Controller in slot B                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      4                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:24:46:00:00:02:8e:4d:cb:de:5a  
+      Subsystem ID (SSID):           4                                                
+      Associated volume group:       5                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           4                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot A                             
+      Current owner:                 Controller in slot A                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      5                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:28:78:00:00:02:a8:4d:cb:dd:fc  
+      Subsystem ID (SSID):           5                                                
+      Associated volume group:       6                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           5                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot B                             
+      Current owner:                 Controller in slot B                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      6                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:24:46:00:00:02:92:4d:cb:de:6f  
+      Subsystem ID (SSID):           6                                                
+      Associated volume group:       7                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           6                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot A                             
+      Current owner:                 Controller in slot A                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      7                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:28:78:00:00:02:ac:4d:cb:de:12  
+      Subsystem ID (SSID):           7                                                
+      Associated volume group:       8                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           7                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot B                             
+      Current owner:                 Controller in slot B                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      8                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:24:46:00:00:02:96:4d:cb:de:86  
+      Subsystem ID (SSID):           8                                                
+      Associated volume group:       9                                                
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           8                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot A                             
+      Current owner:                 Controller in slot A                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      9                                                
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:28:78:00:00:02:b0:4d:cb:de:28  
+      Subsystem ID (SSID):           9                                                
+      Associated volume group:       10                                               
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           9                                                
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot B                             
+      Current owner:                 Controller in slot B                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      10                                               
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:24:46:00:00:02:9a:4d:cb:de:9c  
+      Subsystem ID (SSID):           10                                               
+      Associated volume group:       11                                               
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           10                                               
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot A                             
+      Current owner:                 Controller in slot A                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+
+   Volume name:                      11                                               
+                                                                                      
+      Volume status:                 Optimal                                          
+                                                                                      
+      Capacity:                      278.896 GB                                       
+      Volume world-wide identifier:  60:08:0e:50:00:23:28:78:00:00:02:b4:4d:cb:de:3f  
+      Subsystem ID (SSID):           11                                               
+      Associated volume group:       12                                               
+      RAID level:                    1                                                
+                                                                                      
+      LUN:                           11                                               
+      Accessible By:                 Default Group                                    
+                                                                                      
+      Media type:                    Hard Disk Drive                                  
+      Interface type:                Serial Attached SCSI (SAS)                       
+      Tray loss protection:          No                                               
+                                                                                      
+      Secure:                        No                                               
+                                                                                      
+      Preferred owner:               Controller in slot B                             
+      Current owner:                 Controller in slot B                             
+
+
+      Segment size:                                       1936 KB         
+      Capacity reserved for future segment size changes:  No              
+      Maximum future segment size:                        Not applicable  
+      Modification priority:                              Highest         
+
+
+      Read cache:                            Enabled   
+      Write cache:                           Disabled  
+         Write cache without batteries:      Disabled  
+         Write cache with mirroring:         Disabled  
+      Flush write cache after (in seconds):  10.00     
+      Dynamic cache read prefetch:           Disabled  
+                                                       
+      Enable background media scan:          Enabled   
+      Media scan with redundancy check:      Enabled   
+                                                       
+      Pre-Read redundancy check:             Disabled  
+
+MISSING VOLUMES------------------------------
+
+   Number of missing volumes: 0
+
+DRIVES------------------------------
+
+SUMMARY
+   Number of drives: 24
+      Current media type(s): Hard Disk Drive (24)
+      Current interface type(s): Serial Attached SCSI (SAS) (24)
+      Drive capabilities: Full Disk Encryption (FDE) (24)
+
+   BASIC:
+
+      TRAY, SLOT  STATUS   CAPACITY    MEDIA TYPE       INTERFACE TYPE  CURRENT DATA RATE  PRODUCT ID        FIRMWARE VERSION  CAPABILITIES  
+      0, 1        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 2        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 3        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 4        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 5        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 6        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 7        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 8        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 9        Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 10       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 11       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 12       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 13       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 14       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 15       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 16       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 17       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 18       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 19       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 20       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 21       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 22       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 23       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+      0, 24       Optimal  279.396 GB  Hard Disk Drive  SAS             6 Gbps             ST9300503SS       MS05              FDE           
+
+   DRIVE CHANNELS (Controller A):
+
+      TRAY, SLOT  PREFERRED CHANNEL  REDUNDANT CHANNEL  
+      0, 1        1                  2                  
+      0, 2        2                  1                  
+      0, 3        1                  2                  
+      0, 4        2                  1                  
+      0, 5        1                  2                  
+      0, 6        2                  1                  
+      0, 7        1                  2                  
+      0, 8        2                  1                  
+      0, 9        1                  2                  
+      0, 10       2                  1                  
+      0, 11       1                  2                  
+      0, 12       2                  1                  
+      0, 13       1                  2                  
+      0, 14       2                  1                  
+      0, 15       1                  2                  
+      0, 16       2                  1                  
+      0, 17       1                  2                  
+      0, 18       2                  1                  
+      0, 19       1                  2                  
+      0, 20       2                  1                  
+      0, 21       1                  2                  
+      0, 22       2                  1                  
+      0, 23       1                  2                  
+      0, 24       2                  1                  
+
+
+HOT SPARE COVERAGE:
+   The following volume groups are not protected: 12, 1, 11, 9, 5, 7, 2, 6, 3, 8, 4, 10
+   Total hot spare drives: 0
+
+      Standby:  0  
+      In use:   0  
+
+
+   DETAILS
+   Drive at Tray 0, Slot 1
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:75:a7:00:00:00:00:00:00:00:00  
+      Associated volume group:   1                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0KTV40000B1021NM6             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 2
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:47:ab:00:00:00:00:00:00:00:00  
+      Associated volume group:   1                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M3DR0000B1021ZBY             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 3
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:82:63:00:00:00:00:00:00:00:00  
+      Associated volume group:   2                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M1VT0000B1021Z9A             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 4
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:29:cb:00:00:00:00:00:00:00:00  
+      Associated volume group:   2                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0K7MB0000B1021RSU             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 5
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1b:08:34:33:00:00:00:00:00:00:00:00  
+      Associated volume group:   3                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0PW970000B10415TL             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      September 3, 2010                
+
+   Drive at Tray 0, Slot 6
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:13:4f:00:00:00:00:00:00:00:00  
+      Associated volume group:   3                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M3M30000B10229S6             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 7
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:7c:bb:00:00:00:00:00:00:00:00  
+      Associated volume group:   4                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M2Y20000B1021CZW             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 8
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:55:23:00:00:00:00:00:00:00:00  
+      Associated volume group:   4                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0LFBT0000B1020MX7             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 22, 2010                  
+
+   Drive at Tray 0, Slot 9
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1b:08:04:3b:00:00:00:00:00:00:00:00  
+      Associated volume group:   5                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0MTK30000B10411DT             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      September 3, 2010                
+
+   Drive at Tray 0, Slot 10
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:29:83:00:00:00:00:00:00:00:00  
+      Associated volume group:   5                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0HN750000B10214NL             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 11
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1b:08:63:d7:00:00:00:00:00:00:00:00  
+      Associated volume group:   6                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0PZ6C0000B104101V             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      September 3, 2010                
+
+   Drive at Tray 0, Slot 12
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:fb:1a:4f:00:00:00:00:00:00:00:00  
+      Associated volume group:   6                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0N3M50000B10217PQ             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 25, 2010                  
+
+   Drive at Tray 0, Slot 13
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:75:e3:00:00:00:00:00:00:00:00  
+      Associated volume group:   7                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0LR0R0000B102027V             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 22, 2010                  
+
+   Drive at Tray 0, Slot 14
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:50:cb:00:00:00:00:00:00:00:00  
+      Associated volume group:   7                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M4XS0000B1020856             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 15
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f4:a9:e3:00:00:00:00:00:00:00:00  
+      Associated volume group:   8                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0L3170000B1022CTJ             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 16
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:3d:6f:00:00:00:00:00:00:00:00  
+      Associated volume group:   8                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0KNAC0000B1021MZZ             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 17
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:fb:57:33:00:00:00:00:00:00:00:00  
+      Associated volume group:   9                                                
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0LYBF0000B1030SG4             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 26, 2010                  
+
+   Drive at Tray 0, Slot 18
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:fb:5b:e7:00:00:00:00:00:00:00:00  
+      Associated volume group:   9                                                
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0LYK40000B1030E95             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 26, 2010                  
+
+   Drive at Tray 0, Slot 19
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:16:3b:00:00:00:00:00:00:00:00  
+      Associated volume group:   10                                               
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M3MS0000B1021PB9             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 20
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f4:eb:53:00:00:00:00:00:00:00:00  
+      Associated volume group:   10                                               
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M50S0000B1020EKN             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 21
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:92:13:00:00:00:00:00:00:00:00  
+      Associated volume group:   11                                               
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M27G0000B1021TQD             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 22
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:86:e7:00:00:00:00:00:00:00:00  
+      Associated volume group:   11                                               
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0KTX80000B10225DY             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+   Drive at Tray 0, Slot 23
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:fb:23:2f:00:00:00:00:00:00:00:00  
+      Associated volume group:   12                                               
+
+
+      Port      Channel      
+      0         1            
+      1         2            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0LHAW0000B10314CP             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 26, 2010                  
+
+   Drive at Tray 0, Slot 24
+    
+
+      Status:                    Optimal                                          
+                                                                                  
+      Mode:                      Assigned                                         
+      Raw capacity:              279.396 GB                                       
+      Usable capacity:           278.896 GB                                       
+      World-wide identifier:     50:00:c5:00:1a:f5:48:c3:00:00:00:00:00:00:00:00  
+      Associated volume group:   12                                               
+
+
+      Port      Channel      
+      0         2            
+      1         1            
+
+
+      Media type:               Hard Disk Drive                  
+      Interface type:           Serial Attached SCSI (SAS)       
+      Drive path redundancy:    OK                               
+                                                                 
+      Security Capable:         Yes, Full Disk Encryption (FDE)  
+      Secure:                   No                               
+      Read/write accessible:    Yes                              
+      Security key identifier:  None                             
+                                                                 
+      Speed:                    10,000 RPM                       
+      Current data rate:        6 Gbps                           
+      Product ID:               ST9300503SS                      
+      Drive Firmware Version:   MS05                             
+      Serial number:            6SE0M4XB0000B1021PFF             
+      Manufacturer:             SEAGATE                          
+      Date of manufacture:      August 21, 2010                  
+
+DRIVE CHANNELS----------------------------
+
+   SUMMARY
+
+
+      CHANNEL  PORT  STATUS   
+      1        1     Optimal  
+      2        2     Optimal  
+
+   DETAILS
+
+      DRIVE CHANNEL 1
+
+         Port: 1
+            Status: Optimal
+            Max. Rate: 6 Gbps
+            Current Rate: 6 Gbps
+            Rate Control: Switched
+            DRIVE COUNTS
+
+               Total # of attached drives: 24
+               Connected to: Controller A
+                  Attached drives: 24
+                     Drive tray: 0 (24 drives)
+
+
+               CUMULATIVE ERROR COUNTS
+
+                  Controller A
+
+                     Baseline time set:               1/19/13 1:57:45 PM  
+                     Sample period (days, hh:mm:ss):  18 days, 02:31:09   
+                     Controller detected errors:      3                   
+                     Drive detected errors:           50                  
+                     Timeout errors:                  15                  
+                     Total I/O count:                 413750915           
+
+                  Controller B
+
+                     Baseline time set:               1/19/13 1:55:51 PM  
+                     Sample period (days, hh:mm:ss):  18 days, 02:33:07   
+                     Controller detected errors:      1                   
+                     Drive detected errors:           24                  
+                     Timeout errors:                  0                   
+                     Total I/O count:                 409120985           
+
+            DRIVE CHANNEL 2
+
+               Port: 2
+                  Status: Optimal
+                  Max. Rate: 6 Gbps
+                  Current Rate: 6 Gbps
+                  Rate Control: Switched
+                  DRIVE COUNTS
+
+                     Total # of attached drives: 24
+                     Connected to: Controller B
+                        Attached drives: 24
+                           Drive tray: 0 (24 drives)
+
+
+                     CUMULATIVE ERROR COUNTS
+
+                        Controller A
+
+                           Baseline time set:               1/19/13 1:57:45 PM  
+                           Sample period (days, hh:mm:ss):  18 days, 02:31:09   
+                           Controller detected errors:      26                  
+                           Drive detected errors:           32                  
+                           Timeout errors:                  14                  
+                           Total I/O count:                 411366279           
+
+                        Controller B
+
+                           Baseline time set:               1/19/13 1:55:51 PM  
+                           Sample period (days, hh:mm:ss):  18 days, 02:33:07   
+                           Controller detected errors:      1                   
+                           Drive detected errors:           14                  
+                           Timeout errors:                  0                   
+                           Total I/O count:                 412947938           
+
+            TRAYS------------------------------
+ Controller/Drive Tray 0 Overall Component Information
+
+
+
+         Tray path redundancy:  OK                             
+         Current drive types:   SAS/Full Disk Encryption(FDE)  
+         Part number:           PN L2-25067-30                 
+         Serial number:         SN SX04601339                  
+         Vendor:                VN LSI                         
+         Date of manufacture:   November 1, 2010               
+
+
+ Power-Fan Canisters Detected:  2
+
+
+
+         Power-fan canister (Left) status:  Optimal           
+         Part number:                       PN 40022-03       
+         Serial number:                     SN 105002846      
+         Vendor:                            VN LSI            
+         Date of manufacture:               December 1, 2010  
+
+
+         Power-fan canister (Right) status:  Optimal           
+         Part number:                        PN 40022-03       
+         Serial number:                      SN 105002845      
+         Vendor:                             VN LSI            
+         Date of manufacture:                December 1, 2010  
+
+
+       Power Supplies Detected:  2
+
+
+
+               Power supply status:  Optimal           
+               Location:             Left              
+               Part number:          PN 40022-03       
+               Serial number:        SN 105002846      
+               Vendor:               VN LSI            
+               Date of manufacture:  December 1, 2010  
+
+
+               Power supply status:  Optimal           
+               Location:             Right             
+               Part number:          PN 40022-03       
+               Serial number:        SN 105002845      
+               Vendor:               VN LSI            
+               Date of manufacture:  December 1, 2010  
+
+
+
+       Fans Detected:  4
+
+
+
+               Fan Status:  Optimal  
+               Location:    Left     
+
+
+               Fan Status:  Optimal  
+               Location:    Left     
+
+
+               Fan Status:  Optimal  
+               Location:    Right    
+
+
+               Fan Status:  Optimal  
+               Location:    Right    
+
+
+
+
+ Temperature Sensors Detected:  6
+
+
+
+         Temperature sensor status:  Optimal               
+         Location:                   Controller A, Slot 1  
+
+
+         Temperature sensor status:  Optimal               
+         Location:                   Controller A, Slot 2  
+
+
+         Temperature sensor status:  Optimal               
+         Location:                   Controller B, Slot 1  
+
+
+         Temperature sensor status:  Optimal               
+         Location:                   Controller B, Slot 2  
+
+
+         Temperature sensor status:  Optimal                    
+         Location:                   Power-fan canister (Left)  
+
+
+         Temperature sensor status:  Optimal                     
+         Location:                   Power-fan canister (Right)  
+
+
+
+
+         MAPPINGS (Storage Partitioning - Disabled)-------------------
+
+
+            Volume Name    LUN  Controller  Accessible by  Volume status     
+            Access Volume  31   A,B         Default Group  Optimal           
+            0              0    A           Default Group  Optimal           
+            1              1    B           Default Group  Optimal           
+            10             10   A           Default Group  Optimal           
+            11             11   B           Default Group  Optimal           
+            2              2    A           Default Group  Optimal           
+            3              3    B           Default Group  Optimal           
+            4              4    A           Default Group  Optimal           
+            5              5    B           Default Group  Optimal           
+            6              6    A           Default Group  Optimal           
+            7              7    B           Default Group  Optimal           
+            8              8    A           Default Group  Optimal           
+            9              9    B           Default Group  Optimal           
+
+
+            TOPOLOGY DEFINITIONS                                           
+                                                                           
+               STORAGE ARRAY                                               
+                  Default type:                   Linux                    
+                                                                           
+                  Default Group                                            
+                     Host:                        linux                    
+                        Host type:                Linux                    
+                        Interface type:           SAS                      
+                           Host port identifier:  50:06:05:b0:02:f6:14:40  
+                           Alias:                 linuxP0                  
+                           Host port identifier:  50:06:05:b0:02:f6:32:f0  
+                           Alias:                 linuxP1                  
+                           Host port identifier:  50:06:05:b0:02:f6:15:40  
+                           Alias:                 linuxP2                  
+                           Host port identifier:  50:06:05:b0:02:f6:28:e0  
+                           Alias:                 linuxP3                  
+                           Host port identifier:  50:06:05:b0:02:f6:16:e0  
+                           Alias:                 linuxP4                  
+                           Host port identifier:  50:06:05:b0:02:f6:23:40  
+                           Alias:                 linuxP5                  
+                                                                           
+
+            NVSRAM HOST TYPE DEFINITIONS
+
+            NOTE: The following indexes are not used: 16, 18 - 31
+
+
+            HOST TYPE                                                     AVT STATUS  ASSOCIATED INDEX  
+            AIX                                                           Disabled    4                 
+            AIX (with Veritas DMP)                                        Enabled     9                 
+            HP-UX                                                         Enabled     3                 
+            HPXTPGS                                                       Disabled    15                
+            Irix                                                          Disabled    5                 
+            LNXAVT                                                        Enabled     7                 
+            Linux                                                         Disabled    6 (Default)       
+            NCRMPRAS                                                      Disabled    0                 
+            Netware Failover                                              Disabled    11                
+            SOLTPGS                                                       Disabled    17                
+            Solaris (with Veritas DMP)                                    Enabled     12                
+            Solaris (with or without MPXIO)                               Disabled    2                 
+            VMWARE                                                        Disabled    10                
+            Windows Server 2003/Server 2008 Clustered                     Disabled    8                 
+            Windows Server 2003/Server 2008 Clustered (supports DMP)      Enabled     14                
+            Windows Server 2003/Server 2008 Non-Clustered                 Disabled    1                 
+            Windows Server 2003/Server 2008 Non-Clustered (supports DMP)  Enabled     13                
+

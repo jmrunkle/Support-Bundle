@@ -6,7 +6,7 @@
 #     $Date: 2013-05-03 (Fri, 3 May 2013) $
 #   $Source: /home/AnalyzeSCD.pl $
 #   $Author: jr186037 $
-# $Revision: 1.0.0.0 $
+# $Revision: 1.1.0.0 $
 ################################################################################
 
 package AnalyzeSCD;
@@ -16,12 +16,23 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '1.0.0.0';       # version number
-my $DEBUG = 1;                  # for debug mode
+our $VERSION = '1.1.0.0';       # version number
+my $DEBUG = 0;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
 
 # use this to set debug mode command line arguments
-if ($DEBUG) { @ARGV = ('stateCaptureData.bak.txt'); }
+if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData.txt'); }
+
+################################################################################
+#                              REVISION SUMMARY
+################################################################################
+# Fixed in 1.0.0.1:
+# - print that no luall/chall were found when that happens
+# - correctly handle the case of negative Tick counts
+################################################################################
+# Fixed in 1.1.0.0:
+# - capture/print the exception log
+################################################################################
 
 #-------------------------------------------------------------------------------
 
@@ -90,7 +101,7 @@ print "\nReading stateCaptureData... ";
 open(SCD, "<", "$arg") or die("Could not open file: $arg");
 print "Done.\nBuilding data structures... ";
 
-# $uptime_a, $uptime_b, $type, $fw_a, $fw_b are the constants holding the 
+# $uptime_a, $uptime_b, $type, and $fw are the constants holding the 
 #   controllers uptime, type, and fw
 my ($uptime_a, $uptime_b, $type, $fw);
 
@@ -116,6 +127,13 @@ my (@errors_a, @errors_b);
 #   controller A (else controller B)
 my ($chall, $luall, $a);
 
+# @exclog_a, @exclog_b are arrays containing the lines for the exception log
+#   on controller A and controller B respectively
+my (@exclog_a, @exclog_b);
+
+# $exclog is a flag indicating that we are in an exclog section
+my $exclog;
+
 while(<SCD>) {
     chomp;
     # See if we are at a boundary where we need to switch.
@@ -129,7 +147,7 @@ while(<SCD>) {
         $chall = 1;         # turn the chall flag on
         @chall0 = ();       # reset chall0 accumulator
     }             
-    elsif ($_ =~ m{->       # mathc '->'
+    elsif ($_ =~ m{->       # match '->'
                    \s       # a space
                    luall    # 'luall'
                    \s       # another space
@@ -148,7 +166,7 @@ while(<SCD>) {
         $luall = 1;         # turn luall flag on
         @luall0 = ();       # reset luall0 accumulator
     }     
-    elsif ($_ =~ m{->            # mathc '->'
+    elsif ($_ =~ m{->            # match '->'
                    \s            # a space
                    iditnall      # 'iditnall'
                    \s            # another space
@@ -165,27 +183,47 @@ while(<SCD>) {
             @luall_b = @luall0;
         }
     }
+    elsif ($_ =~ m{Executing        # match 'Executing'
+                   \s               # a space character
+                   excLogShow       # 'excLogShow'
+                   .+               # anything
+                   controller       # 'controller'
+                   \s               # a space character
+                   ([AB])           # 'A' or 'B' (w/ backref)
+                   }xsm)
+    {
+        $a = $1 =~ m{A}xsm;
+        $exclog = 1;
+    }
+    elsif ($exclog && ($_ =~ m{^        # line starts with
+                               Step     # Step
+                               }xsm))
+   {
+        $exclog = 0;
+   }
     if ($chall)
     {
         push(@chall0, $_); # record the line
         if ($_ =~ m{Tick        # match 'Tick'
                     \s          # a space
-                    (\d+)       # a series of digits (with backref)
+                    (-?\d+)     # a series of digits (with backref)
+                                #  with an optional negative sign
                     }xsm)       # should catch 'Tick ##########'
         {
-            $time = int($1/5184000);
+            if ($1 < 0) { $time = int((-$1 + 2**31)/5184000); }
+            else { $time = int($1/5184000); }            
         }
         elsif ($_ =~ m{^                            # match at start of line
                        (\d+)                        # some digits (w/ bref)
                        -                            # a hyphen
                        ([AB])                       # 'A' or 'B' (with bref)
                        \s+                          # 1 or more spaces
-                       (\d\d[.]\d\d[.]\d\d[.]\d\d)  # and ##.##.##.## (w/ bref)
+                       (\d+[.]\d+[.]\d+[.]\d+)  # and ##.##.##.## (w/ bref)
                        }xsm)
         {
             $type = $1;             # set controller type (assumed same)
-            $a = $2 =~ m/A/xsm;     # set a flag if controller A
             $fw = $3;               # set firmware version variable
+            $a = $2 =~ m/A/xsm;     # set a flag if controller A
             if ($a)
             {
                 $uptime_a = $time;
@@ -247,6 +285,11 @@ while(<SCD>) {
             }
         }
     }
+    elsif($exclog)
+    {
+        if ($a) { push(@exclog_a, $_); }
+        else { push(@exclog_b, $_); }
+    }
 }
 close(SCD);
 print "Done.\n";
@@ -262,8 +305,9 @@ sub print_controller_info
         print "Controllers are $type"."s with $fw firmware.\n\n";
         if ($uptime_a) { print "Controller A has been up $uptime_a days.\n"; }
         if ($uptime_b) { print "Controller B has been up $uptime_b days.\n"; }
-        print '-'x79,"\n";
     }
+    else { print "No luall/chall found...\n"; }
+    print '-'x79,"\n";
     return;
 }
 
@@ -367,38 +411,6 @@ sub print_orp_errors
     print '-'x79,"\n";
 }
 
-# print_luall - prints luall for controller A
-sub print_luall
-{
-    if (@luall_a)
-    {
-        print "Controller A:\n";
-        print "$_\n" foreach(@luall_a);
-    }
-    if (@luall_b)
-    {
-        print "Controller B:\n";
-        print "$_\n" foreach(@luall_b);
-    }
-    return;
-}
-
-# print_chall - prints chall for controller A
-sub print_chall
-{
-    if (@chall_a)
-    {
-        print "Controller A:\n";
-        print "$_\n" foreach(@chall_a);
-    }
-    if (@chall_b)
-    {
-        print "Controller B:\n";
-        print "$_\n" foreach(@chall_b);
-    }
-    return;
-}
-
 # print_luall_info - prints the luall information
 sub print_luall_info
 {
@@ -447,13 +459,55 @@ sub print_luall_info
         }
     }
     print ' \\','-'x48,'/',"\n";
+	print '-'x79,"\n";
     return;
+}
+
+# print_luall - prints luall output
+sub print_luall
+{
+    if (@luall_a)
+    {
+        print "Controller A:\n";
+        print "$_\n" foreach(@luall_a);
+    }
+    if (@luall_b)
+    {
+        print "Controller B:\n";
+        print "$_\n" foreach(@luall_b);
+    }
+	print '-'x79,"\n";
+    return;
+}
+
+# print_chall - prints chall output
+sub print_chall
+{
+    if (@chall_a)
+    {
+        print "Controller A:\n";
+        print "$_\n" foreach(@chall_a);
+    }
+    if (@chall_b)
+    {
+        print "Controller B:\n";
+        print "$_\n" foreach(@chall_b);
+    }
+	print '-'x79,"\n";
+    return;
+}
+
+# print_exclog - prints the exception log(s)
+sub print_exclog
+{
+    if (@exclog_a) { print "$_\n" foreach(@exclog_a); }
+    if (@exclog_b) { print "$_\n" foreach(@exclog_b); }
 }
 
 #-------------------------------------------------------------------------------
 
 print '-'x79,"\n";
-if ($type) { print_controller_info; }
+print_controller_info;
 if (@errors_a || @errors_b) { print_outliers; }
 if (%info_a || %info_b)
 {
@@ -462,6 +516,7 @@ if (%info_a || %info_b)
 }
 
 my $input = 'y';
+if ($DEBUG) { $input = 'n'; }
 if (!$nohup)
 {
     print "\n",'-'x79,"\n";
@@ -474,12 +529,12 @@ if ($input =~ m/^n/xsim)
     print "\n";
     exit 0;
 }
-print '-'x79,"\n";
 print "\n";
-print_chall;
+if(@chall_a || @chall_b) { print_chall; }
 print "\n";
-print_luall;
+if(@luall_a || @luall_b) { print_luall; }
 print "\n";
+print_exclog;
 
 1;
 
