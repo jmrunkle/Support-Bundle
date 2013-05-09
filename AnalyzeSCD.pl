@@ -6,7 +6,7 @@
 #     $Date: 2013-05-08 (Wed, 8 May 2013) $
 #   $Source: /home/AnalyzeSCD.pl $
 #   $Author: jr186037 $
-# $Revision: 1.1.0.1 $
+# $Revision: 1.2.0.0 $
 ################################################################################
 
 package AnalyzeSCD;
@@ -16,12 +16,12 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '1.1.0.1';       # version number
-my $DEBUG = 0;                  # for debug mode
+our $VERSION = '1.2.0.0';       # version number
+my $DEBUG = 1;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
 
 # use this to set debug mode command line arguments
-if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData.txt'); }
+if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData7.txt'); }
 
 ################################################################################
 #                              REVISION SUMMARY
@@ -34,8 +34,13 @@ if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData.txt'); }
 # - capture/print the exception log
 ################################################################################
 # Fixed in 1.1.0.1:
-# - fixed zero days uptime bug = prints 'zero' days
-# - fixed documentation for pod2man, pod2html, etc.
+# - zero days uptime bug = prints 'zero' days
+# - documentation for pod2man, pod2html, etc.
+################################################################################
+# Fixed in 1.2.0.0:
+# - handles 'x' character in ORP on pattern matching
+# - also prints 1 day properly instead of 1 days
+# - made "outliers" more restrictive
 ################################################################################
 
 #-------------------------------------------------------------------------------
@@ -253,7 +258,7 @@ while(<SCD>) {
                     (SASdr|FCdr)    # 'SASdr' or 'FCdr' (w/ backref)
                     \s+             # space(s)
                     :               # a colon
-                    ([+\-d]+)       # a combo of '+', '-', and 'd'
+                    ([+\-dx]+)      # the ORP chars (w/ backref)
                     \s+             # space(s)
                     :               # a colon
                     \s+             # space(s)
@@ -310,8 +315,16 @@ sub print_controller_info
     {
         print "CONTROLLER INFO:\n\n";
         print "Controllers are $type"."s with $fw firmware.\n\n";
-        if ($uptime_a) { print "Controller A has been up $uptime_a days.\n"; }
-        if ($uptime_b) { print "Controller B has been up $uptime_b days.\n"; }
+        if ($uptime_a)
+        { 
+            print "Controller A has been up $uptime_a ".
+                  ($uptime_a eq 1 ? "day.\n" : "days.\n"); 
+        }
+        if ($uptime_b)
+        { 
+            print "Controller B has been up $uptime_b ".
+                  ($uptime_b eq 1 ? "day.\n" : "days.\n");
+        }
     }
     else { print "No luall/chall found...\n"; }
     print '-'x79,"\n";
@@ -353,7 +366,7 @@ sub print_outliers
         foreach(keys %info_a)
         {
             my $count = $info_a{$_}->{'count'};
-            if ($count >= $mean_a + $stdev_a) { $outliers{$_} = $count; }
+            if ($count >= 2 * $mean_a + 3 * $stdev_a) { $outliers{$_} = $count; }
         }
     }
     if (@errors_b)
@@ -364,7 +377,7 @@ sub print_outliers
         foreach(keys %info_b)
         {
             my $count = $info_b{$_}->{'count'};
-            if ($count >= $mean_b + $stdev_b)
+            if ($count >= 2 * $mean_b + 3 * $stdev_b)
             {
                 if (!$outliers{$_} || 
                    ($outliers{$_} && $count > $outliers{$_}))
@@ -385,7 +398,7 @@ sub print_outliers
             }
         }
     }
-    else { print "\nNo outliers were found in the data.\n"; }
+    else { print "\nNo extreme outliers were found in the data.\n"; }
     print '-'x79,"\n";
 }
 
