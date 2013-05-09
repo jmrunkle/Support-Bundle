@@ -3,10 +3,10 @@
 ################################################################################
 # AnalyzeSCD.pl - analyzes the stateCaptureData for disk array troubleshooting
 # RCS Keywords:
-#     $Date: 2013-05-03 (Fri, 3 May 2013) $
+#     $Date: 2013-05-08 (Wed, 8 May 2013) $
 #   $Source: /home/AnalyzeSCD.pl $
 #   $Author: jr186037 $
-# $Revision: 1.1.0.0 $
+# $Revision: 1.1.0.1 $
 ################################################################################
 
 package AnalyzeSCD;
@@ -16,7 +16,7 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '1.1.0.0';       # version number
+our $VERSION = '1.1.0.1';       # version number
 my $DEBUG = 0;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
 
@@ -32,6 +32,10 @@ if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData.txt'); }
 ################################################################################
 # Fixed in 1.1.0.0:
 # - capture/print the exception log
+################################################################################
+# Fixed in 1.1.0.1:
+# - fixed zero days uptime bug = prints 'zero' days
+# - fixed documentation for pod2man, pod2html, etc.
 ################################################################################
 
 #-------------------------------------------------------------------------------
@@ -57,7 +61,7 @@ sub print_usage_info {
 
 my $arg = $ARGV[0];    # $arg = command line argument
 
-# if the argument is "-v" or "--version" print version
+# if the argument is "-h" or "-?" or "--help" print usage information
 if (
     ( !$arg ) || (
         $arg =~ m{^      # at start of string
@@ -71,8 +75,8 @@ if (
 {
     print_usage_info;
     exit 0;
-# if the argument is "-h" or "-?" or "--help" print usage information
 }
+# if the argument is "-v" or "--version" print version
 elsif (
     $arg =~ m{^           # at start of string
             (-v|          # match '-v'
@@ -83,7 +87,9 @@ elsif (
 {
     print_version;
     exit 0;
-} elsif ($arg =~ m{^            # at start of string
+}
+# if the argument is "-n" or "--nohup" run w/o input
+elsif ($arg =~ m{^            # at start of string
                    (-n|         # match '-n'
                    --nohup)     # or '--nohup'
                    $            # end of string
@@ -211,7 +217,8 @@ while(<SCD>) {
                     }xsm)       # should catch 'Tick ##########'
         {
             if ($1 < 0) { $time = int((-$1 + 2**31)/5184000); }
-            else { $time = int($1/5184000); }            
+            else { $time = int($1/5184000); }
+            if ($time == 0) { $time = 'zero'; }
         }
         elsif ($_ =~ m{^                            # match at start of line
                        (\d+)                        # some digits (w/ bref)
@@ -558,61 +565,39 @@ the oceans of information contained in this file.
 
 =head1 USAGE
 
-C<perl AnalyzeSCD.pl 
-
-=head1 REQUIRED ARGUMENTS
-
-Required arguments...
+C<perl AnalyzeSCD.pl [-n|-?|-v] stateCaptureData.txt>
 
 =head1 OPTIONS
 
 =over 4
 
-=item C<option 1>
+=item C<-n>, C<--nohup>
 
-FILLER
+    Run without user input and print to STDOUT
 
-=item C<option 2>
+=item C<-v>, C<--version>
 
-FILLER
+    Print version number and exit
 
-=item C<option 3>
+=item C<-h>, C<--help>, C<-?>
 
-FILLER
+    Print usage information and exit
 
 =back
 
-=head1 DIAGNOSTICS
-
-Diagnostics...
-
 =head1 EXIT STATUS
 
-Exit Status...
-
-=head1 CONFIGURATION
-
-Config...
-
-=head1 DEPENDENCIES
-
-Dependencies...
-
-=head1 INCOMPATIBILITIES
-
-Incompatibilities...
+    If the program exited successfully, it will exit with a code of 0.
+    Otherwise, the execution was not successful.
 
 =head1 BUGS AND LIMITATIONS
 
-Bugs and Limits...
+    This program assumes a maximum of 8 trays and 24 slots.
+    Manual alteration is required for anything more specific.
 
 =head1 AUTHOR
 
 Jason Michael Runkle <jason.runkle@teradata.com>
-
-=head1 LICENSE AND COPYRIGHT
-
-None.
 
 =cut
 
