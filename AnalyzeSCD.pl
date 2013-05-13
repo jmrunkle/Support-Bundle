@@ -6,7 +6,7 @@
 #     $Date: 2013-05-08 (Wed, 8 May 2013) $
 #   $Source: /home/AnalyzeSCD.pl $
 #   $Author: jr186037 $
-# $Revision: 1.2.0.0 $
+# $Revision: 1.2.0.1 $
 ################################################################################
 
 package AnalyzeSCD;
@@ -16,8 +16,8 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '1.2.0.0';       # version number
-my $DEBUG = 1;                  # for debug mode
+our $VERSION = '1.2.0.1';       # version number
+my $DEBUG = 0;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
 
 # use this to set debug mode command line arguments
@@ -42,12 +42,15 @@ if ($DEBUG) { @ARGV = ('-n', 'stateCaptureData7.txt'); }
 # - also prints 1 day properly instead of 1 days
 # - made "outliers" more restrictive
 ################################################################################
+# Fixed in 1.2.0.1:
+# - catch all luall lines '  ', '-<', '=<', '#<' and 'd<'
+################################################################################
 
 #-------------------------------------------------------------------------------
 
 # print_version - prints the version
 sub print_version {
-    print "\nState Capture Analyzer - Version $VERSION\n\n";
+    print "State Capture Analyzer - Version $VERSION\n\n";
     return;
 }
 
@@ -108,7 +111,8 @@ elsif ($arg =~ m{^            # at start of string
 
 # read the MEL lines, format into appropriate data structures as necessary
 # format into errors array
-print "\nReading stateCaptureData... ";
+print_version;
+print "Reading stateCaptureData... ";
 open(SCD, "<", "$arg") or die("Could not open file: $arg");
 print "Done.\nBuilding data structures... ";
 
@@ -250,7 +254,7 @@ while(<SCD>) {
     {
         push(@luall0, $_); # record the line
         if ($_ =~ m{^               # match at start of line
-                    [\sd><]+        # one or more spaces or d's or >'s or <'s
+                    [\s\-<=#d]+      # matches initial characters on drive lines
                     \w+             # non-space(s)
                     \s+             # space(s)
                     (t\d,s\d+)      # 't#,s##' (w/ backref)

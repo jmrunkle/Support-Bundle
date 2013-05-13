@@ -3,10 +3,10 @@
 ################################################################################
 # AnalyzeMEL.pl - analyzes a MEL for disk array troubleshooting
 # RCS Keywords:
-#     $Date: 2013-05-01 (Wed, 1 May 2013) $
+#     $Date: 2013-05-13 (Mon, 13 May 2013) $
 #   $Source: /home/AnalyzeMEL.pl $
 #   $Author: jr186037 $
-# $Revision: 1.0.0.0 $
+# $Revision: 1.0.1.1 $
 ################################################################################
 
 package SupportBundle::AnalyzeMEL;
@@ -16,15 +16,31 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '1.0.0.0';       # version number
+our $VERSION = '1.0.1.1';       # version number
 my $DEBUG = 0;                  # to be used for debugging
 my $nohup = 0;                  # for use in non-interactive mode
+
+# use this to set debug mode command line arguments
+if ($DEBUG) { @ARGV = ('-n', 'majorEventLog.txt'); }
+
+################################################################################
+#                              REVISION SUMMARY
+################################################################################
+# Fixed in 1.0.0.1:
+# - very minor printing adjustments (new line changes)
+################################################################################
+# Fixed in 1.0.1.0:
+# - incorporated finding of PI errors in URS timeline
+################################################################################
+# Fixed in 1.0.1.1:
+# - Fixed a slight issue in the checking of controller resets
+################################################################################
 
 #-------------------------------------------------------------------------------
 
 # print_version - prints the version
 sub print_version {
-    print "\nMEL Analyzer - Version $VERSION\n\n";
+    print "MEL Analyzer - Version $VERSION\n\n";
     return;
 }
 
@@ -42,7 +58,6 @@ sub print_usage_info {
 
 #-------------------------------------------------------------------------------
 
-if ($DEBUG) { @ARGV = ('-n', 'majorEventLog.txt'); }
 my $arg = $ARGV[0];    # $arg = command line argument
 
 # if the argument is "-v" or "--version" print version
@@ -85,7 +100,7 @@ if (
 # read the MEL lines, format into appropriate data structures as necessary
 # format into errors array
 print_version;
-print "\nReading MEL... ";
+print "Reading MEL... ";
 open(MEL, "<", "$arg") or die("Could not open file: $arg");
 print "Done.\nBuilding data structures... ";
 
@@ -150,7 +165,10 @@ while(<MEL>) {
                 push(@controller_timeline, [$time, $desc, $loca]);
             }
             # if this is a URS condition -> urs timeline
-            if ($desc =~ m/Unreadable/xsm)
+            if ($type =~ m/Volume/xsm &&
+                $desc =~ m{(Unreadable|                 # URS errors
+                           Protection\sinformation)     # PI errors
+                          }xsm)
             {
                 push(@urs_timeline, [$time, $desc, $loca]);
             }
@@ -182,9 +200,11 @@ sub print_urs_timeline
         foreach (@urs_timeline) 
         {
             my $time = substr @$_[0], 11;
-            my $desc = substr @$_[1], 30;
+            my $desc = @$_[1];
+            if ($desc =~ m{Unreadable}xsm) { $desc = 'URS'.(substr $desc, 30); }
+            else { $desc = 'Protection information mismatch'; }
             my $vol = substr @$_[2], 20;
-            printf("%-24s%-42s%-12s\n", $time, "URS".$desc, $vol);
+            printf("%-24s%-42s%-12s\n", $time, $desc, $vol);
         }
     } else
     {
@@ -203,7 +223,9 @@ sub print_controller_timeline
             my $time = substr @$_[0], 11;
             my $desc = substr @$_[1], 13;
             my $loca = substr @$_[2], 20;
-            my $controller = ($loca =~ m/slot [A0]/xsim ? 'Controller A': 'Controller B');
+            my $controller = ($loca =~ m/slot \s [A1]/xsim ? 
+                              'Controller A': 
+                              'Controller B');
             printf("%-24s%-42s%-12s\n", $time, $desc, $controller);
         }
     } else
