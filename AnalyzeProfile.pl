@@ -7,7 +7,7 @@
 #     $Date: 2013-05-22 (Wed, 22 May 2013) $
 #   $Source: /home/AnalyzeSCD.pl $
 #   $Author: jr186037 $
-# $Revision: 2.0.0.0 $
+# $Revision: 2.0.0.1 $
 ################################################################################
 
 package AnalyzeProfile;
@@ -17,14 +17,14 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '2.0.0.0';       # version number
+our $VERSION = '2.0.0.1';       # version number
 my $DEBUG = 0;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
 my $MAXTRAY = 9;                # maximum number of trays
 my $MAXSLOT = 24;               # maximum number of slots
 
 # use this to set debug mode command line arguments
-if ($DEBUG) { @ARGV = ('-n', 'storageArrayProfile4.txt'); }
+if ($DEBUG) { @ARGV = ('-n', 'storageArrayProfile9.txt'); }
 
 ################################################################################
 #                              REVISION SUMMARY
@@ -37,6 +37,9 @@ if ($DEBUG) { @ARGV = ('-n', 'storageArrayProfile4.txt'); }
 # - Finally, I also added the ability to print out what volumes are not Online
 #   and what drives are not Optimal
 # - Solved the issue of multiple volumes in a volume group
+################################################################################
+# Fixed in 2.0.0.1
+# - Fixed some issues with the older versions of arrays (e.g. 5885's)
 ################################################################################
 
 #-------------------------------------------------------------------------------
@@ -246,12 +249,11 @@ while(<SAP>) {
         elsif ($subsection eq 'controller' &&
                $_ =~ m{^          # line starts with
                        \s+        # space(s)
-                       Serial     # 'Serial'
-                       \s         # a space
-                       number:    # 'number:'
+                       # 'Serial number:'
+                       Serial \s number:
                        \s+        # space(s)
                        (\w+)      # a word (backref 1)
-                       \s+        # space(s)
+                       \s*        # optional space(s)
                        $          # end of line
                       }xsm)       
         {
@@ -279,17 +281,18 @@ while(<SAP>) {
             if ($1 !~ /\D/) { $volume = {$1-1 => 1}; }
             undef %current_volume_info;
         }
+        # This next one is for match the format of older arrays (e.g. 5885's)
         elsif ($_ =~ m{^                  # line starts with
                        \s+                # space(s)
                        VOLUME \s GROUP    # 'VOLUME GROUP'
                        \s                 # a space
                        (\d+)              # number(s) (backref 1)
-                       \s                 # a space
+                       \s+                # space(s)
                        \(RAID\s           # '(RAID '
                        (\d+)              # number(s) (backref 2)
                        \)                 # ')'
-                      }xsm)
-            # should catch ' VOLUME GROUP (RAID 1)'
+                      }xsim)
+            # should catch ' VOLUME GROUP (RAID 1)' (case insensitive)
         {
             $subsection = '';
             # assume the volume is one less than the volume group
@@ -301,7 +304,7 @@ while(<SAP>) {
                         Status:    # 'Status:'
                         \s+        # space(s)
                         (\w+)      # a word (backref 1)
-                        \s+        # space(s)
+                        \s*        # optional space(s)
                         $          # end of line
                        }xsm) ||
                ($_ =~ m{^        # line starts with
@@ -361,7 +364,7 @@ while(<SAP>) {
         # set subsection for associated volumes to 'volume'
         { $subsection = 'volume'; undef $volume; }
         elsif ($subsection eq 'volume' &&
-               $_ =~ m{^            # line starts with
+              ($_ =~ m{^            # line starts with
                        \s+          # space(s)
                        (\d+)        # number(s) (backref 1)
                        \s+          # space(s)
@@ -370,7 +373,15 @@ while(<SAP>) {
                        \w*          # an optional word
                        \s*          # optional space(s)
                        $            # end of line character
-                      }xsm)         # should catch '  34   267.903 GB  Yes  '
+                      }xsm ||       # should catch '  34   267.903 GB  Yes  '
+               $_ =~ m{^                # line starts with
+                       \s+              # space(s)
+                       (\d+)            # number(s) (backref 1)
+                       \s+              # space(s)
+                       \(\S+ \s GB\)    # nonspace(s) ' GB'
+                       \s*              # optional space(s)
+                       $                # end of line
+                      }xsm))            # should catch '  0 (67.865 GB)  '
         {
             if (defined $volume) { $volume = {%$volume, $1 => 1}; }
             else { $volume = { $1 => 1 }; }
@@ -405,12 +416,22 @@ while(<SAP>) {
         }
         elsif ($subsection eq 'drives' &&
         # if we're in the associated drives section and we match the following
-               $_ =~ m{^        # line starts with
+              ($_ =~ m{^        # line starts with
                        \s+      # space(s)
                        (\d+)    # number(s) (backref 1)
                        \s+      # space(s)
                        (\d+)    # number(s) (backref 2)
-                      }xsm)     # should catch ' 0    4'
+                      }xsm ||   # should catch ' 0    4'
+               $_ =~ m{^                # line starts with
+                       \s+              # space(s)
+                       # 'Drive at Tray '
+                       Drive \s at \s Tray \s
+                       (\d+)            # number(s) (backref 1)
+                       , \s Slot \s     # ', Slot '
+                       (\d+)            # number(s) (backref 2)
+                      }xsm))
+            # the last part is for older arrays to catch:
+            #   '  Drive at Tray 4, Slot 1 '
         {
             my ($tray, $slot) = ($1, $2);
             # add a space to slots less than 10 for printing later

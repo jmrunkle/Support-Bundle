@@ -1,0 +1,3137 @@
+PROFILE FOR STORAGE ARRAY: DAMC101-6 (5/23/13 3:22:56 PM)
+
+SUMMARY------------------------------
+   Number of controllers: 2
+   Number of volume groups: 28
+   Total number of volumes (includes an access volume): 29 of 2048 used
+      Number of standard volumes: 28
+      Number of access volumes: 1
+   Number of drives: 56
+   Supported drive types: Fibre (56)
+   Total hot spare drives: 0
+      Standby: 0
+      In use: 0
+   Access volume: LUN 31 (see Mappings section for details)
+   Default host type: Linux (Host type index 6)
+   Current configuration
+      Firmware version: 06.10.36.30
+      NVSRAM version: NV588XNCR833010
+   Pending configuration
+      Staged firmware download supported?: Yes
+      Firmware version: None
+      NVSRAM version: None
+      Transferred on: None
+   NVSRAM configured for batteries?: No
+   Start cache flushing at (in percentage): 80
+   Stop cache flushing at (in percentage): 60
+   Cache block size (in KB): 4
+   Media scan frequency (in days): 7
+   Failover alert delay (in minutes): 5
+   Feature enable identifier: 393133323400393133323900423BD7DD
+   Storage array worldwide name (ID): 600A0B800016F3BD000000004A0D8D09
+
+CONTROLLERS------------------------------
+   Number of controllers: 2
+
+   Controller in Slot A
+      Status: Online 
+      Current configuration
+         Firmware version: 06.10.36.30
+            Appware version: 06.10.36.30
+            Bootware version: 06.10.09.00
+         NVSRAM version: NV588XNCR833010
+      Pending configuration
+         Firmware version: None
+            Appware version: None
+            Bootware version: None
+         NVSRAM version: None
+         Transferred on: None
+      Board ID: 5885
+      Product ID: INF-01-00       
+      Product revision: 0610
+      Serial number: 1T43091324
+      Date of manufacture: August 4, 2004
+      Cache/processor size (MB): 1024/128
+      Date/Time: Thu May 23 15:18:59 CDT 2013
+      Associated Volumes (* = Preferred Owner): 
+         0*, 2*, 4*, 6*, 8*, 10*, 12*, 14*, 16*, 18*, 20*, 22*, 24*, 26*
+      Ethernet port: 1
+         MAC address: 00:a0:b8:16:f3:bd
+         Host name: DAMC101-61
+         Network configuration: Static
+         IP address: 39.83.40.6
+         Subnet mask: 255.240.0.0
+         Gateway: 0.0.0.0
+         Remote login: Enabled
+
+      Drive interface: Fibre
+         Channel: 1
+         Current ID: 125/0x1
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Drive interface: Fibre
+         Channel: 2
+         Current ID: 125/0x1
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Drive interface: Fibre
+         Channel: 3
+         Current ID: 125/0x1
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Drive interface: Fibre
+         Channel: 4
+         Current ID: 125/0x1
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Host interface: Fibre
+         Port: 1
+         Current ID: 125/0x1
+         Preferred ID: 125/0x1
+         NL-Port ID: 0x000001
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+         Topology: Arbitrated Loop - Private
+         World-wide port name: 20:04:00:a0:b8:16:f3:be
+         World-wide node name: 20:04:00:a0:b8:16:f3:bd
+         Part type: HPFC-5600    revision 4
+      Host interface: Fibre
+         Port: 2
+         Current ID: 125/0x1
+         Preferred ID: 125/0x1
+         NL-Port ID: 0x000001
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+         Topology: Arbitrated Loop - Private
+         World-wide port name: 20:04:00:a0:b8:16:f3:bf
+         World-wide node name: 20:04:00:a0:b8:16:f3:bd
+         Part type: HPFC-5600    revision 4
+
+   Controller in Slot B
+      Status: Online 
+      Current configuration
+         Firmware version: 06.10.36.30
+            Appware version: 06.10.36.30
+            Bootware version: 06.10.09.00
+         NVSRAM version: NV588XNCR833010
+      Pending configuration
+         Firmware version: None
+            Appware version: None
+            Bootware version: None
+         NVSRAM version: None
+         Transferred on: None
+      Board ID: 5885
+      Product ID: INF-01-00       
+      Product revision: 0610
+      Serial number: 1T43091329
+      Date of manufacture: August 4, 2004
+      Cache/processor size (MB): 1024/128
+      Date/Time: Thu May 23 15:18:48 CDT 2013
+      Associated Volumes (* = Preferred Owner): 
+         1*, 3*, 5*, 7*, 9*, 11*, 13*, 15*, 17*, 19*, 21*, 23*, 25*, 27*
+      Ethernet port: 1
+         MAC address: 00:a0:b8:13:6b:4f
+         Host name: DAMC101-62
+         Network configuration: Static
+         IP address: 39.99.40.6
+         Subnet mask: 255.240.0.0
+         Gateway: 0.0.0.0
+         Remote login: Enabled
+
+      Drive interface: Fibre
+         Channel: 1
+         Current ID: 124/0x2
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Drive interface: Fibre
+         Channel: 2
+         Current ID: 124/0x2
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Drive interface: Fibre
+         Channel: 3
+         Current ID: 124/0x2
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Drive interface: Fibre
+         Channel: 4
+         Current ID: 124/0x2
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+      Host interface: Fibre
+         Port: 1
+         Current ID: 2/0xE4
+         Preferred ID: 2/0xE4
+         NL-Port ID: 0x0000E4
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+         Topology: Arbitrated Loop - Private
+         World-wide port name: 20:05:00:a0:b8:16:f3:be
+         World-wide node name: 20:05:00:a0:b8:16:f3:bd
+         Part type: HPFC-5600    revision 4
+      Host interface: Fibre
+         Port: 2
+         Current ID: 3/0xE2
+         Preferred ID: 3/0xE2
+         NL-Port ID: 0x0000E2
+         Maximum data rate: 2 Gbps 
+         Current data rate: 2 Gbps 
+         Data rate control: Switch
+         Link status: Up
+         Topology: Arbitrated Loop - Private
+         World-wide port name: 20:05:00:a0:b8:16:f3:bf
+         World-wide node name: 20:05:00:a0:b8:16:f3:bd
+         Part type: HPFC-5600    revision 4
+
+VOLUME GROUPS------------------------------
+   Number of volume groups: 28
+
+   Volume Group 1 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         0 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 4, Slot 1 [mirrored pair with drive at tray 2, slot 1]
+         Drive at Tray 2, Slot 1 [mirrored pair with drive at tray 4, slot 1]
+   Volume Group 2 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         1 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 1, Slot 1 [mirrored pair with drive at tray 3, slot 1]
+         Drive at Tray 3, Slot 1 [mirrored pair with drive at tray 1, slot 1]
+   Volume Group 3 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         2 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 3, Slot 2 [mirrored pair with drive at tray 1, slot 2]
+         Drive at Tray 1, Slot 2 [mirrored pair with drive at tray 3, slot 2]
+   Volume Group 4 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         3 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 2 [mirrored pair with drive at tray 4, slot 2]
+         Drive at Tray 4, Slot 2 [mirrored pair with drive at tray 2, slot 2]
+   Volume Group 5 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         4 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 3 [mirrored pair with drive at tray 4, slot 3]
+         Drive at Tray 4, Slot 3 [mirrored pair with drive at tray 2, slot 3]
+   Volume Group 6 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         5 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 3, Slot 3 [mirrored pair with drive at tray 1, slot 3]
+         Drive at Tray 1, Slot 3 [mirrored pair with drive at tray 3, slot 3]
+   Volume Group 7 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         6 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 1, Slot 4 [mirrored pair with drive at tray 3, slot 4]
+         Drive at Tray 3, Slot 4 [mirrored pair with drive at tray 1, slot 4]
+   Volume Group 8 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         7 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 4 [mirrored pair with drive at tray 4, slot 4]
+         Drive at Tray 4, Slot 4 [mirrored pair with drive at tray 2, slot 4]
+   Volume Group 9 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         8 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 4, Slot 5 [mirrored pair with drive at tray 2, slot 5]
+         Drive at Tray 2, Slot 5 [mirrored pair with drive at tray 4, slot 5]
+   Volume Group 10 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         9 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 1, Slot 5 [mirrored pair with drive at tray 3, slot 5]
+         Drive at Tray 3, Slot 5 [mirrored pair with drive at tray 1, slot 5]
+   Volume Group 11 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         10 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 3, Slot 6 [mirrored pair with drive at tray 1, slot 6]
+         Drive at Tray 1, Slot 6 [mirrored pair with drive at tray 3, slot 6]
+   Volume Group 12 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         11 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 6 [mirrored pair with drive at tray 4, slot 6]
+         Drive at Tray 4, Slot 6 [mirrored pair with drive at tray 2, slot 6]
+   Volume Group 13 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         12 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 7 [mirrored pair with drive at tray 4, slot 7]
+         Drive at Tray 4, Slot 7 [mirrored pair with drive at tray 2, slot 7]
+   Volume Group 14 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         13 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 3, Slot 7 [mirrored pair with drive at tray 1, slot 7]
+         Drive at Tray 1, Slot 7 [mirrored pair with drive at tray 3, slot 7]
+   Volume Group 15 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         14 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 1, Slot 8 [mirrored pair with drive at tray 3, slot 8]
+         Drive at Tray 3, Slot 8 [mirrored pair with drive at tray 1, slot 8]
+   Volume Group 16 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         15 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 8 [mirrored pair with drive at tray 4, slot 8]
+         Drive at Tray 4, Slot 8 [mirrored pair with drive at tray 2, slot 8]
+   Volume Group 17 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         16 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 4, Slot 9 [mirrored pair with drive at tray 2, slot 9]
+         Drive at Tray 2, Slot 9 [mirrored pair with drive at tray 4, slot 9]
+   Volume Group 18 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         17 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 1, Slot 9 [mirrored pair with drive at tray 3, slot 9]
+         Drive at Tray 3, Slot 9 [mirrored pair with drive at tray 1, slot 9]
+   Volume Group 19 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         18 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 3, Slot 10 [mirrored pair with drive at tray 1, slot 10]
+         Drive at Tray 1, Slot 10 [mirrored pair with drive at tray 3, slot 10]
+   Volume Group 20 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         19 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 10 [mirrored pair with drive at tray 4, slot 10]
+         Drive at Tray 4, Slot 10 [mirrored pair with drive at tray 2, slot 10]
+   Volume Group 21 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         20 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 11 [mirrored pair with drive at tray 4, slot 11]
+         Drive at Tray 4, Slot 11 [mirrored pair with drive at tray 2, slot 11]
+   Volume Group 22 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         21 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 3, Slot 11 [mirrored pair with drive at tray 1, slot 11]
+         Drive at Tray 1, Slot 11 [mirrored pair with drive at tray 3, slot 11]
+   Volume Group 23 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         22 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 1, Slot 12 [mirrored pair with drive at tray 3, slot 12]
+         Drive at Tray 3, Slot 12 [mirrored pair with drive at tray 1, slot 12]
+   Volume Group 24 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         23 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 12 [mirrored pair with drive at tray 4, slot 12]
+         Drive at Tray 4, Slot 12 [mirrored pair with drive at tray 2, slot 12]
+   Volume Group 25 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         24 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 4, Slot 13 [mirrored pair with drive at tray 2, slot 13]
+         Drive at Tray 2, Slot 13 [mirrored pair with drive at tray 4, slot 13]
+   Volume Group 26 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         25 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 1, Slot 13 [mirrored pair with drive at tray 3, slot 13]
+         Drive at Tray 3, Slot 13 [mirrored pair with drive at tray 1, slot 13]
+   Volume Group 27 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot A
+      Associated volumes and free capacities:
+         26 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 3, Slot 14 [mirrored pair with drive at tray 1, slot 14]
+         Drive at Tray 1, Slot 14 [mirrored pair with drive at tray 3, slot 14]
+   Volume Group 28 (RAID 1)
+      Status: Online 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Current owner: Controller in slot B
+      Associated volumes and free capacities:
+         27 (67.865 GB)
+      Associated drives (in piece order):
+         Drive at Tray 2, Slot 14 [mirrored pair with drive at tray 4, slot 14]
+         Drive at Tray 4, Slot 14 [mirrored pair with drive at tray 2, slot 14]
+
+STANDARD VOLUMES------------------------------
+
+SUMMARY
+   Number of standard volumes: 28
+   See other Volumes sub-tabs for premium feature information.
+
+   NAME  STATUS   CAPACITY   RAID LEVEL  VOLUME GROUP  
+   0     Optimal  67.865 GB  1           1             
+   1     Optimal  67.865 GB  1           2             
+   2     Optimal  67.865 GB  1           3             
+   3     Optimal  67.865 GB  1           4             
+   4     Optimal  67.865 GB  1           5             
+   5     Optimal  67.865 GB  1           6             
+   6     Optimal  67.865 GB  1           7             
+   7     Optimal  67.865 GB  1           8             
+   8     Optimal  67.865 GB  1           9             
+   9     Optimal  67.865 GB  1           10            
+   10    Optimal  67.865 GB  1           11            
+   11    Optimal  67.865 GB  1           12            
+   12    Optimal  67.865 GB  1           13            
+   13    Optimal  67.865 GB  1           14            
+   14    Optimal  67.865 GB  1           15            
+   15    Optimal  67.865 GB  1           16            
+   16    Optimal  67.865 GB  1           17            
+   17    Optimal  67.865 GB  1           18            
+   18    Optimal  67.865 GB  1           19            
+   19    Optimal  67.865 GB  1           20            
+   20    Optimal  67.865 GB  1           21            
+   21    Optimal  67.865 GB  1           22            
+   22    Optimal  67.865 GB  1           23            
+   23    Optimal  67.865 GB  1           24            
+   24    Optimal  67.865 GB  1           25            
+   25    Optimal  67.865 GB  1           26            
+   26    Optimal  67.865 GB  1           27            
+   27    Optimal  67.865 GB  1           28            
+
+DETAILS
+   Volume name: 0
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:02:4a:11:8b:d6
+      Subsystem ID (SSID): 0
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 1
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 1
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:04:4a:11:8b:e0
+      Subsystem ID (SSID): 1
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 2
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 2
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:06:4a:11:8b:ee
+      Subsystem ID (SSID): 2
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 3
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 3
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:08:4a:11:8b:fa
+      Subsystem ID (SSID): 3
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 4
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 4
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:0a:4a:11:8c:0a
+      Subsystem ID (SSID): 4
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 5
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 5
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:0c:4a:11:8c:18
+      Subsystem ID (SSID): 5
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 6
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 6
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:0e:4a:11:8c:26
+      Subsystem ID (SSID): 6
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 7
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 7
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:10:4a:11:8c:34
+      Subsystem ID (SSID): 7
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 8
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 8
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:12:4a:11:8c:40
+      Subsystem ID (SSID): 8
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 9
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 9
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:14:4a:11:8c:50
+      Subsystem ID (SSID): 9
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 10
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 10
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:16:4a:11:8c:5e
+      Subsystem ID (SSID): 10
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 11
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 11
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:18:4a:11:8c:6a
+      Subsystem ID (SSID): 11
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 12
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 12
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:1a:4a:11:8c:78
+      Subsystem ID (SSID): 12
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 13
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 13
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:1c:4a:11:8c:84
+      Subsystem ID (SSID): 13
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 14
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 14
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:1e:4a:11:8c:92
+      Subsystem ID (SSID): 14
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 15
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 15
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:20:4a:11:8c:9e
+      Subsystem ID (SSID): 15
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 16
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 16
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:22:4a:11:8c:ac
+      Subsystem ID (SSID): 16
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 17
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 17
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:24:4a:11:8c:b8
+      Subsystem ID (SSID): 17
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 18
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 18
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:26:4a:11:8c:c6
+      Subsystem ID (SSID): 18
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 19
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 19
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:28:4a:11:8c:d2
+      Subsystem ID (SSID): 19
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 20
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 20
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:2a:4a:11:8c:e2
+      Subsystem ID (SSID): 20
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 21
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 21
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:2c:4a:11:8c:f0
+      Subsystem ID (SSID): 21
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 22
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 22
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:2e:4a:11:8c:fc
+      Subsystem ID (SSID): 22
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 23
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 23
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:30:4a:11:8d:0a
+      Subsystem ID (SSID): 23
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 24
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 24
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:32:4a:11:8d:18
+      Subsystem ID (SSID): 24
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 25
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 25
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:34:4a:11:8d:24
+      Subsystem ID (SSID): 25
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 26
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 26
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:36:4a:11:8d:30
+      Subsystem ID (SSID): 26
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot A
+      Current owner: Controller in slot A
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 27
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+   Volume name: 27
+      Volume ID: 60:0a:0b:80:00:16:f3:bd:00:00:00:38:4a:11:8d:3e
+      Subsystem ID (SSID): 27
+      Status: Optimal 
+      Drive type: Fibre Channel
+      Tray loss protection: Yes
+      Preferred owner: Controller in slot B
+      Current owner: Controller in slot B
+      Capacity: 67.865 GB
+      RAID level: 1
+      Segment size: 1936 KB
+      Modification priority: High
+      Associated volume group: 28
+      Read cache: Enabled
+      Write cache without batteries: Disabled
+      Write cache with mirroring: Disabled
+      Flush write cache after (in seconds): 10.00
+      Cache read ahead multiplier: 1
+      Enable background media scan: Enabled
+      Media scan with redundancy check: Enabled
+
+
+MISSING VOLUMES------------------------------
+   Number of missing volumes: 0
+
+DRIVES------------------------------
+
+SUMMARY
+   Number of drives: 56
+      Supported drive types: Fibre (56)
+
+   BASIC:
+
+   TRAY, SLOT  STATUS   CAPACITY   CURRENT DATA RATE  PRODUCT ID        FIRMWARE VERSION  
+   1, 1        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 2        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 3        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 4        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 5        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 6        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 7        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 8        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 9        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 10       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 11       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 12       Optimal  68.366 GB  2 Gbps             ST373454FC        MS09              
+   1, 13       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   1, 14       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 1        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 2        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 3        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 4        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 5        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 6        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 7        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 8        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 9        Optimal  68.366 GB  2 Gbps             ST373454FC        MS09              
+   2, 10       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 11       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 12       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 13       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   2, 14       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 1        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 2        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 3        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 4        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 5        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 6        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 7        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 8        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 9        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 10       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 11       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 12       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 13       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   3, 14       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 1        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 2        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 3        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 4        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 5        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 6        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 7        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 8        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 9        Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 10       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 11       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 12       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 13       Optimal  68.366 GB  2 Gbps             ST373453FC        MS08              
+   4, 14       Optimal  68.366 GB  2 Gbps             ST373454FC        MS09              
+
+   DRIVE CHANNELS:
+
+   TRAY, SLOT  PREFERRED CHANNEL  REDUNDANT CHANNEL  
+   1, 1        4                  1                  
+   1, 2        1                  4                  
+   1, 3        4                  1                  
+   1, 4        1                  4                  
+   1, 5        4                  1                  
+   1, 6        1                  4                  
+   1, 7        4                  1                  
+   1, 8        1                  4                  
+   1, 9        4                  1                  
+   1, 10       1                  4                  
+   1, 11       4                  1                  
+   1, 12       1                  4                  
+   1, 13       4                  1                  
+   1, 14       1                  4                  
+   2, 1        1                  3                  
+   2, 2        3                  1                  
+   2, 3        1                  3                  
+   2, 4        3                  1                  
+   2, 5        1                  3                  
+   2, 6        3                  1                  
+   2, 7        1                  3                  
+   2, 8        3                  1                  
+   2, 9        1                  3                  
+   2, 10       3                  1                  
+   2, 11       1                  3                  
+   2, 12       3                  1                  
+   2, 13       1                  3                  
+   2, 14       3                  1                  
+   3, 1        3                  2                  
+   3, 2        2                  3                  
+   3, 3        3                  2                  
+   3, 4        2                  3                  
+   3, 5        3                  2                  
+   3, 6        2                  3                  
+   3, 7        3                  2                  
+   3, 8        2                  3                  
+   3, 9        3                  2                  
+   3, 10       2                  3                  
+   3, 11       3                  2                  
+   3, 12       2                  3                  
+   3, 13       3                  2                  
+   3, 14       2                  3                  
+   4, 1        2                  4                  
+   4, 2        4                  2                  
+   4, 3        2                  4                  
+   4, 4        4                  2                  
+   4, 5        2                  4                  
+   4, 6        4                  2                  
+   4, 7        2                  4                  
+   4, 8        4                  2                  
+   4, 9        2                  4                  
+   4, 10       4                  2                  
+   4, 11       2                  4                  
+   4, 12       4                  2                  
+   4, 13       2                  4                  
+   4, 14       4                  2                  
+
+HOT SPARE COVERAGE:
+   The following volume groups are not protected: 10, 9, 1, 3, 8, 22, 19, 4, 26, 17, 20, 23, 14, 7, 12, 21, 15, 13, 28, 27, 24, 25, 11, 16, 2, 5, 6, 18
+
+   Total hot spare drives: 0
+      Standby: 0
+      In use: 0
+
+DETAILS
+   Drive at Tray 1, Slot 1
+      Drive port: 1, Channel: 4, ID: 8/0xD9
+      Drive port: 2, Channel: 1, ID: 8/0xD9
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1RRPZ00007505F841
+      Vendor: SEAGATE 
+      Date of manufacture: August 6, 2004
+      World-wide name: 20:00:00:0c:50:f2:cf:59
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 2
+
+   Drive at Tray 1, Slot 2
+      Drive port: 1, Channel: 1, ID: 9/0xD6
+      Drive port: 2, Channel: 4, ID: 9/0xD6
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW0Z5QW00007428DYSS
+      Vendor: SEAGATE 
+      Date of manufacture: May 9, 2004
+      World-wide name: 20:00:00:0c:50:da:7f:0e
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 3
+
+   Drive at Tray 1, Slot 3
+      Drive port: 1, Channel: 4, ID: 10/0xD5
+      Drive port: 2, Channel: 1, ID: 10/0xD5
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1MMEF00007501G34H
+      Vendor: SEAGATE 
+      Date of manufacture: July 8, 2004
+      World-wide name: 20:00:00:0c:50:0d:1f:fe
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 6
+
+   Drive at Tray 1, Slot 4
+      Drive port: 1, Channel: 1, ID: 11/0xD4
+      Drive port: 2, Channel: 4, ID: 11/0xD4
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1MMFR00007501G2Z8
+      Vendor: SEAGATE 
+      Date of manufacture: July 8, 2004
+      World-wide name: 20:00:00:0c:50:0d:1e:1d
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 7
+
+   Drive at Tray 1, Slot 5
+      Drive port: 1, Channel: 4, ID: 12/0xD3
+      Drive port: 2, Channel: 1, ID: 12/0xD3
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1M2MA00007501G2M1
+      Vendor: SEAGATE 
+      Date of manufacture: July 8, 2004
+      World-wide name: 20:00:00:0c:50:0d:1f:d7
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 10
+
+   Drive at Tray 1, Slot 6
+      Drive port: 1, Channel: 1, ID: 13/0xD2
+      Drive port: 2, Channel: 4, ID: 13/0xD2
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1M8WY000075029SY7
+      Vendor: SEAGATE 
+      Date of manufacture: July 17, 2004
+      World-wide name: 20:00:00:0c:50:0d:df:2d
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 11
+
+   Drive at Tray 1, Slot 7
+      Drive port: 1, Channel: 4, ID: 14/0xD1
+      Drive port: 2, Channel: 1, ID: 14/0xD1
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1KPQK00007505D1KC
+      Vendor: SEAGATE 
+      Date of manufacture: August 6, 2004
+      World-wide name: 20:00:00:0c:50:f2:d5:f2
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 14
+
+   Drive at Tray 1, Slot 8
+      Drive port: 1, Channel: 1, ID: 15/0xCE
+      Drive port: 2, Channel: 4, ID: 15/0xCE
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1NM8C00007502AZR5
+      Vendor: SEAGATE 
+      Date of manufacture: July 15, 2004
+      World-wide name: 20:00:00:0c:50:0d:b1:32
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 15
+
+   Drive at Tray 1, Slot 9
+      Drive port: 1, Channel: 4, ID: 81/0x54
+      Drive port: 2, Channel: 1, ID: 81/0x54
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FGNV00007545GSYC
+      Vendor: SEAGATE 
+      Date of manufacture: January 19, 2007
+      World-wide name: 20:00:00:18:62:5f:40:cb
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 18
+
+   Drive at Tray 1, Slot 10
+      Drive port: 1, Channel: 1, ID: 97/0x39
+      Drive port: 2, Channel: 4, ID: 97/0x39
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1NP0V00007502AZG1
+      Vendor: SEAGATE 
+      Date of manufacture: July 15, 2004
+      World-wide name: 20:00:00:0c:50:0d:b1:c4
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 19
+
+   Drive at Tray 1, Slot 11
+      Drive port: 1, Channel: 4, ID: 65/0x71
+      Drive port: 2, Channel: 1, ID: 65/0x71
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1BG9H00007444VERN
+      Vendor: SEAGATE 
+      Date of manufacture: May 2, 2004
+      World-wide name: 20:00:00:0c:50:d3:de:e4
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 22
+
+   Drive at Tray 1, Slot 12
+      Drive port: 1, Channel: 1, ID: 73/0x66
+      Drive port: 2, Channel: 4, ID: 73/0x66
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373454FC      
+      Firmware version: MS09
+      Serial number: 3KP1MW600000761581T8
+      Vendor: SEAGATE 
+      Date of manufacture: October 17, 2005
+      World-wide name: 20:00:00:11:c6:d2:f9:86
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 23
+
+   Drive at Tray 1, Slot 13
+      Drive port: 1, Channel: 4, ID: 89/0x4A
+      Drive port: 2, Channel: 1, ID: 89/0x4A
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FPYN000075197S5K
+      Vendor: SEAGATE 
+      Date of manufacture: November 22, 2004
+      World-wide name: 20:00:00:11:c6:38:92:8d
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 26
+
+   Drive at Tray 1, Slot 14
+      Drive port: 1, Channel: 1, ID: 105/0x2D
+      Drive port: 2, Channel: 4, ID: 105/0x2D
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2ESEQ0000751909DM
+      Vendor: SEAGATE 
+      Date of manufacture: November 22, 2004
+      World-wide name: 20:00:00:11:c6:38:87:01
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 27
+
+   Drive at Tray 2, Slot 1
+      Drive port: 1, Channel: 1, ID: 16/0xCD
+      Drive port: 2, Channel: 3, ID: 16/0xCD
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FK0V000075197SR2
+      Vendor: SEAGATE 
+      Date of manufacture: November 22, 2004
+      World-wide name: 20:00:00:11:c6:38:92:08
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 1
+
+   Drive at Tray 2, Slot 2
+      Drive port: 1, Channel: 3, ID: 17/0xCC
+      Drive port: 2, Channel: 1, ID: 17/0xCC
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FR4Z000075196QFH
+      Vendor: SEAGATE 
+      Date of manufacture: November 22, 2004
+      World-wide name: 20:00:00:11:c6:38:90:96
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 4
+
+   Drive at Tray 2, Slot 3
+      Drive port: 1, Channel: 1, ID: 18/0xCB
+      Drive port: 2, Channel: 3, ID: 18/0xCB
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2D2HM000075195L1T
+      Vendor: SEAGATE 
+      Date of manufacture: November 23, 2004
+      World-wide name: 20:00:00:11:c6:38:8e:e8
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 5
+
+   Drive at Tray 2, Slot 4
+      Drive port: 1, Channel: 3, ID: 19/0xCA
+      Drive port: 2, Channel: 1, ID: 19/0xCA
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2F80C000075197R6M
+      Vendor: SEAGATE 
+      Date of manufacture: November 22, 2004
+      World-wide name: 20:00:00:11:c6:38:95:6e
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 8
+
+   Drive at Tray 2, Slot 5
+      Drive port: 1, Channel: 1, ID: 20/0xC9
+      Drive port: 2, Channel: 3, ID: 20/0xC9
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FETS000075196HVB
+      Vendor: SEAGATE 
+      Date of manufacture: November 21, 2004
+      World-wide name: 20:00:00:11:c6:38:7b:64
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 9
+
+   Drive at Tray 2, Slot 6
+      Drive port: 1, Channel: 3, ID: 21/0xC7
+      Drive port: 2, Channel: 1, ID: 21/0xC7
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2ECCM000075198DCP
+      Vendor: SEAGATE 
+      Date of manufacture: November 22, 2004
+      World-wide name: 20:00:00:11:c6:38:80:49
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 12
+
+   Drive at Tray 2, Slot 7
+      Drive port: 1, Channel: 1, ID: 22/0xC6
+      Drive port: 2, Channel: 3, ID: 22/0xC6
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1LFCV00007452803N
+      Vendor: SEAGATE 
+      Date of manufacture: July 1, 2004
+      World-wide name: 20:00:00:0c:50:ee:e9:58
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 13
+
+   Drive at Tray 2, Slot 8
+      Drive port: 1, Channel: 3, ID: 23/0xC5
+      Drive port: 2, Channel: 1, ID: 23/0xC5
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW30DTW0000753376NE
+      Vendor: SEAGATE 
+      Date of manufacture: July 26, 2006
+      World-wide name: 20:00:00:14:c3:fb:55:2c
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 16
+
+   Drive at Tray 2, Slot 9
+      Drive port: 1, Channel: 1, ID: 82/0x53
+      Drive port: 2, Channel: 3, ID: 82/0x53
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373454FC      
+      Firmware version: MS09
+      Serial number: 3KP449J600009719RRQD
+      Vendor: SEAGATE 
+      Date of manufacture: November 13, 2006
+      World-wide name: 20:00:00:18:62:51:e4:05
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 17
+
+   Drive at Tray 2, Slot 10
+      Drive port: 1, Channel: 3, ID: 98/0x36
+      Drive port: 2, Channel: 1, ID: 98/0x36
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FPAW000075196R2T
+      Vendor: SEAGATE 
+      Date of manufacture: November 24, 2004
+      World-wide name: 20:00:00:11:c6:38:b4:72
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 20
+
+   Drive at Tray 2, Slot 11
+      Drive port: 1, Channel: 1, ID: 66/0x6E
+      Drive port: 2, Channel: 3, ID: 66/0x6E
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1XNYD00007346PCT3
+      Vendor: SEAGATE 
+      Date of manufacture: November 1, 2007
+      World-wide name: 20:00:00:18:62:fe:39:bf
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 21
+
+   Drive at Tray 2, Slot 12
+      Drive port: 1, Channel: 3, ID: 74/0x65
+      Drive port: 2, Channel: 1, ID: 74/0x65
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2E6YL000075195ACD
+      Vendor: SEAGATE 
+      Date of manufacture: November 23, 2004
+      World-wide name: 20:00:00:11:c6:38:a7:c6
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 24
+
+   Drive at Tray 2, Slot 13
+      Drive port: 1, Channel: 1, ID: 90/0x49
+      Drive port: 2, Channel: 3, ID: 90/0x49
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2G0ZY000075195M63
+      Vendor: SEAGATE 
+      Date of manufacture: November 24, 2004
+      World-wide name: 20:00:00:11:c6:38:ac:e8
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 25
+
+   Drive at Tray 2, Slot 14
+      Drive port: 1, Channel: 3, ID: 106/0x2C
+      Drive port: 2, Channel: 1, ID: 106/0x2C
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FXZ0000075198R5L
+      Vendor: SEAGATE 
+      Date of manufacture: November 24, 2004
+      World-wide name: 20:00:00:11:c6:38:a9:53
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 28
+
+   Drive at Tray 3, Slot 1
+      Drive port: 1, Channel: 3, ID: 24/0xC3
+      Drive port: 2, Channel: 2, ID: 24/0xC3
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1RY9F00007505DP3P
+      Vendor: SEAGATE 
+      Date of manufacture: August 6, 2004
+      World-wide name: 20:00:00:0c:50:f2:d0:8b
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 2
+
+   Drive at Tray 3, Slot 2
+      Drive port: 1, Channel: 2, ID: 25/0xBC
+      Drive port: 2, Channel: 3, ID: 25/0xBC
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2E6R000007520CGU9
+      Vendor: SEAGATE 
+      Date of manufacture: November 24, 2004
+      World-wide name: 20:00:00:11:c6:38:b4:83
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 3
+
+   Drive at Tray 3, Slot 3
+      Drive port: 1, Channel: 3, ID: 26/0xBA
+      Drive port: 2, Channel: 2, ID: 26/0xBA
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FPLS00007520CH2Y
+      Vendor: SEAGATE 
+      Date of manufacture: November 24, 2004
+      World-wide name: 20:00:00:11:c6:38:b5:46
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 6
+
+   Drive at Tray 3, Slot 4
+      Drive port: 1, Channel: 2, ID: 27/0xB9
+      Drive port: 2, Channel: 3, ID: 27/0xB9
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FPLQ000075196H55
+      Vendor: SEAGATE 
+      Date of manufacture: November 24, 2004
+      World-wide name: 20:00:00:11:c6:38:b4:df
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 7
+
+   Drive at Tray 3, Slot 5
+      Drive port: 1, Channel: 3, ID: 28/0xB6
+      Drive port: 2, Channel: 2, ID: 28/0xB6
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FPEN000075198R8Y
+      Vendor: SEAGATE 
+      Date of manufacture: November 24, 2004
+      World-wide name: 20:00:00:11:c6:38:b4:d6
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 10
+
+   Drive at Tray 3, Slot 6
+      Drive port: 1, Channel: 2, ID: 29/0xB5
+      Drive port: 2, Channel: 3, ID: 29/0xB5
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FPWV000075159YE5
+      Vendor: SEAGATE 
+      Date of manufacture: November 23, 2004
+      World-wide name: 20:00:00:11:c6:38:a7:3b
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 11
+
+   Drive at Tray 3, Slot 7
+      Drive port: 1, Channel: 3, ID: 30/0xB4
+      Drive port: 2, Channel: 2, ID: 30/0xB4
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2FSV8000075197TG9
+      Vendor: SEAGATE 
+      Date of manufacture: November 23, 2004
+      World-wide name: 20:00:00:11:c6:38:a2:a2
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 14
+
+   Drive at Tray 3, Slot 8
+      Drive port: 1, Channel: 2, ID: 31/0xB3
+      Drive port: 2, Channel: 3, ID: 31/0xB3
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1MKNW00007502A7EK
+      Vendor: SEAGATE 
+      Date of manufacture: July 19, 2004
+      World-wide name: 20:00:00:0c:50:0d:f3:f4
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 15
+
+   Drive at Tray 3, Slot 9
+      Drive port: 1, Channel: 3, ID: 83/0x52
+      Drive port: 2, Channel: 2, ID: 83/0x52
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2N59L00007525DB3X
+      Vendor: SEAGATE 
+      Date of manufacture: December 28, 2004
+      World-wide name: 20:00:00:11:c6:4d:67:d2
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 18
+
+   Drive at Tray 3, Slot 10
+      Drive port: 1, Channel: 2, ID: 99/0x35
+      Drive port: 2, Channel: 3, ID: 99/0x35
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1PWEE000075046TRY
+      Vendor: SEAGATE 
+      Date of manufacture: July 31, 2004
+      World-wide name: 20:00:00:0c:50:f2:32:e9
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 19
+
+   Drive at Tray 3, Slot 11
+      Drive port: 1, Channel: 3, ID: 67/0x6D
+      Drive port: 2, Channel: 2, ID: 67/0x6D
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW36HWP00002308CHY9
+      Vendor: SEAGATE 
+      Date of manufacture: May 21, 2007
+      World-wide name: 20:00:00:18:62:9e:88:e2
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 22
+
+   Drive at Tray 3, Slot 12
+      Drive port: 1, Channel: 2, ID: 75/0x63
+      Drive port: 2, Channel: 3, ID: 75/0x63
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1RKGG00007505F8TB
+      Vendor: SEAGATE 
+      Date of manufacture: August 5, 2004
+      World-wide name: 20:00:00:0c:50:f2:b5:b5
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 23
+
+   Drive at Tray 3, Slot 13
+      Drive port: 1, Channel: 3, ID: 91/0x47
+      Drive port: 2, Channel: 2, ID: 91/0x47
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1QHNQ00007504P945
+      Vendor: SEAGATE 
+      Date of manufacture: August 1, 2004
+      World-wide name: 20:00:00:0c:50:f2:47:82
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 26
+
+   Drive at Tray 3, Slot 14
+      Drive port: 1, Channel: 2, ID: 107/0x2B
+      Drive port: 2, Channel: 3, ID: 107/0x2B
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW0WH20000073223SSM
+      Vendor: SEAGATE 
+      Date of manufacture: September 11, 2005
+      World-wide name: 20:00:00:04:cf:f5:ab:a9
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 27
+
+   Drive at Tray 4, Slot 1
+      Drive port: 1, Channel: 2, ID: 32/0xB2
+      Drive port: 2, Channel: 4, ID: 32/0xB2
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1NT5F00007502CJDA
+      Vendor: SEAGATE 
+      Date of manufacture: July 19, 2004
+      World-wide name: 20:00:00:0c:50:0d:f8:e5
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 1
+
+   Drive at Tray 4, Slot 2
+      Drive port: 1, Channel: 4, ID: 33/0xB1
+      Drive port: 2, Channel: 2, ID: 33/0xB1
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1Q716000074523U88
+      Vendor: SEAGATE 
+      Date of manufacture: July 31, 2004
+      World-wide name: 20:00:00:0c:50:f2:33:33
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 4
+
+   Drive at Tray 4, Slot 3
+      Drive port: 1, Channel: 2, ID: 34/0xAE
+      Drive port: 2, Channel: 4, ID: 34/0xAE
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1QJ4G00007505T0X1
+      Vendor: SEAGATE 
+      Date of manufacture: August 6, 2004
+      World-wide name: 20:00:00:0c:50:f2:d0:ab
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 5
+
+   Drive at Tray 4, Slot 4
+      Drive port: 1, Channel: 4, ID: 35/0xAD
+      Drive port: 2, Channel: 2, ID: 35/0xAD
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1QAJX00007504MN3N
+      Vendor: SEAGATE 
+      Date of manufacture: July 31, 2004
+      World-wide name: 20:00:00:0c:50:f2:35:a2
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 8
+
+   Drive at Tray 4, Slot 5
+      Drive port: 1, Channel: 2, ID: 36/0xAC
+      Drive port: 2, Channel: 4, ID: 36/0xAC
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1QM4H000075047VJ7
+      Vendor: SEAGATE 
+      Date of manufacture: July 31, 2004
+      World-wide name: 20:00:00:0c:50:f2:35:d9
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 9
+
+   Drive at Tray 4, Slot 6
+      Drive port: 1, Channel: 4, ID: 37/0xAB
+      Drive port: 2, Channel: 2, ID: 37/0xAB
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1RG0J000075049TDQ
+      Vendor: SEAGATE 
+      Date of manufacture: July 31, 2004
+      World-wide name: 20:00:00:0c:50:f2:45:5c
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 12
+
+   Drive at Tray 4, Slot 7
+      Drive port: 1, Channel: 2, ID: 38/0xAA
+      Drive port: 2, Channel: 4, ID: 38/0xAA
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW1QXTG000075046TBJ
+      Vendor: SEAGATE 
+      Date of manufacture: July 31, 2004
+      World-wide name: 20:00:00:0c:50:f2:34:47
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 13
+
+   Drive at Tray 4, Slot 8
+      Drive port: 1, Channel: 4, ID: 39/0xA9
+      Drive port: 2, Channel: 2, ID: 39/0xA9
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW34KR7000075184GQX
+      Vendor: SEAGATE 
+      Date of manufacture: April 19, 2008
+      World-wide name: 20:00:00:1d:38:7b:39:d1
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 16
+
+   Drive at Tray 4, Slot 9
+      Drive port: 1, Channel: 2, ID: 84/0x51
+      Drive port: 2, Channel: 4, ID: 84/0x51
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW24VCL00007511WDT6
+      Vendor: SEAGATE 
+      Date of manufacture: September 29, 2004
+      World-wide name: 20:00:00:11:c6:20:09:71
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 17
+
+   Drive at Tray 4, Slot 10
+      Drive port: 1, Channel: 4, ID: 100/0x34
+      Drive port: 2, Channel: 2, ID: 100/0x34
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW24WQD000075138F63
+      Vendor: SEAGATE 
+      Date of manufacture: September 29, 2004
+      World-wide name: 20:00:00:11:c6:20:0c:35
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 20
+
+   Drive at Tray 4, Slot 11
+      Drive port: 1, Channel: 2, ID: 68/0x6C
+      Drive port: 2, Channel: 4, ID: 68/0x6C
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2KJDQ00007523780D
+      Vendor: SEAGATE 
+      Date of manufacture: December 18, 2004
+      World-wide name: 20:00:00:11:c6:48:d5:eb
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 21
+
+   Drive at Tray 4, Slot 12
+      Drive port: 1, Channel: 4, ID: 76/0x5C
+      Drive port: 2, Channel: 2, ID: 76/0x5C
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW2HP2X00007522S0W0
+      Vendor: SEAGATE 
+      Date of manufacture: December 9, 2004
+      World-wide name: 20:00:00:11:c6:48:03:20
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 24
+
+   Drive at Tray 4, Slot 13
+      Drive port: 1, Channel: 2, ID: 92/0x46
+      Drive port: 2, Channel: 4, ID: 92/0x46
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373453FC      
+      Firmware version: MS08
+      Serial number: 3HW0PNVX000074151CWL
+      Vendor: SEAGATE 
+      Date of manufacture: October 9, 2003
+      World-wide name: 20:00:00:0c:50:61:3e:84
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 25
+
+   Drive at Tray 4, Slot 14
+      Drive port: 1, Channel: 4, ID: 108/0x2A
+      Drive port: 2, Channel: 2, ID: 108/0x2A
+      Drive path redundancy: OK
+      Status: Optimal 
+      Raw capacity: 68.366 GB
+      Usable capacity: 67.866 GB
+      Current data rate: 2 Gbps
+      Product ID: ST373454FC      
+      Firmware version: MS09
+      Serial number: 3KP26BNC00007627L6RV
+      Vendor: SEAGATE 
+      Date of manufacture: January 6, 2006
+      World-wide name: 20:00:00:14:c3:6f:6d:34
+      Drive type: Fibre Channel
+      Speed: 15015 RPM
+      Mode: Assigned
+      Associated volume group: 28
+
+DRIVE CHANNEL INFORMATION - Channel 1
+
+   SUMMARY------------------------------
+      Channel 1 status: Optimal
+      Controller A link status: Up
+      Controller B link status: Up
+
+   CUMULATIVE ERROR COUNTS------------------------------
+      Controller A Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:15 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-50
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 3
+         Link down errors: 32
+         Total I/O count: -931337951
+      Controller B Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:15 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-50
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 1
+         Link down errors: 38
+         Total I/O count: 107507924
+
+DRIVE CHANNEL INFORMATION - Channel 2
+
+   SUMMARY------------------------------
+      Channel 2 status: Optimal
+      Controller A link status: Up
+      Controller B link status: Up
+
+   CUMULATIVE ERROR COUNTS------------------------------
+      Controller A Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:18 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-53
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 1
+         Link down errors: 61
+         Total I/O count: -936996259
+      Controller B Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:19 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-54
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 0
+         Link down errors: 67
+         Total I/O count: 95894954
+
+DRIVE CHANNEL INFORMATION - Channel 3
+
+   SUMMARY------------------------------
+      Channel 3 status: Optimal
+      Controller A link status: Up
+      Controller B link status: Up
+
+   CUMULATIVE ERROR COUNTS------------------------------
+      Controller A Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:18 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-53
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 0
+         Link down errors: 29
+         Total I/O count: 133142899
+      Controller B Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:19 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-54
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 0
+         Link down errors: 36
+         Total I/O count: -1044865539
+
+DRIVE CHANNEL INFORMATION - Channel 4
+
+   SUMMARY------------------------------
+      Channel 4 status: Optimal
+      Controller A link status: Up
+      Controller B link status: Up
+
+   CUMULATIVE ERROR COUNTS------------------------------
+      Controller A Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:18 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-53
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 0
+         Link down errors: 61
+         Total I/O count: 98417974
+      Controller B Cumulative Error Counts
+         Baseline time set: 8/23/11 3:32:19 AM
+         Sample period (hh:mm:ss): -189 days, -01:-54:-54
+         Controller detected errors: 0
+         Drive detected errors: 0
+         Timeout errors: 2
+         Link down errors: 68
+         Total I/O count: -1069523627
+
+TRAYS------------------------------
+   Controller Tray Overall Component Information
+      Minihub data rate mismatch: No
+      Fan canister: Optimal
+      Fan canister: Optimal
+      Power supply canister
+         Status: Optimal
+      Power supply canister
+         Status: Optimal
+      Temperature: Optimal
+      UPS: Standby
+      Host mini-hub canister
+         Status: Optimal
+         Location: Controller A - Port 1
+         Serial number: SN 1T42465826  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42843501BFE    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F428435015D7    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+      Host mini-hub canister
+         Status: Optimal
+         Location: Controller A - Port 2
+         Serial number: SN 1T42465687  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500B8A    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500CB5    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+      Host mini-hub canister
+         Status: Optimal
+         Location: Controller B - Port 1
+         Serial number: SN 1T42465722  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F428435019C7    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F428435019C2    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+      Host mini-hub canister
+         Status: Optimal
+         Location: Controller B - Port 2
+         Serial number: SN 1T42465969  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F429435008C0    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500D85    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+      Drive mini-hub canister
+         Status: Optimal
+         Location: Channel 1
+         Serial number: SN 1T42465732  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42843501AC9    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+      Drive mini-hub canister
+         Status: Optimal
+         Location: Channel 2
+         Serial number: SN 1T42465577  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F428435019C4    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+      Drive mini-hub canister
+         Status: Optimal
+         Location: Channel 3
+         Serial number: SN 1T42465411  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42843501565    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+      Drive mini-hub canister
+         Status: Optimal
+         Location: Channel 4
+         Serial number: SN 1T42465491  
+         Part number: PN 13499-00    
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42843501568    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 10, 2004
+
+   Drive Tray 1 Overall Component Information
+      Drive technology: Fibre channel
+      Part number: PN 348-0047304 
+      Serial number: SN 0501072208  
+      Vendor: VN LSILOGIC
+      Date of manufacture: January 1, 2005
+      Tray path redundancy: OK
+      Fan canister: Optimal
+      Fan canister: Optimal
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A6846A01XY0F
+         Vendor: VN LSILOGIC
+         Date of manufacture: January 1, 2004
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A6846A01XX0F
+         Vendor: VN LSILOGIC
+         Date of manufacture: January 1, 2004
+      Temperature: Optimal
+      Temperature: Optimal
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: A (left canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T41425370  
+         Vendor: LSILOGIC
+         Date of manufacture: December 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F445435039DC    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: November 9, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F445435039D8    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: November 9, 2004
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: B (right canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T43106221  
+         Vendor: LSILOGIC
+         Date of manufacture: August 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F425435026E5    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: June 18, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42543503FAF    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: June 19, 2004
+
+   Drive Tray 2 Overall Component Information
+      Drive technology: Fibre channel
+      Part number: PN 348-0047304 
+      Serial number: SN 0501072211  
+      Vendor: VN LSILOGIC
+      Date of manufacture: January 1, 2005
+      Tray path redundancy: OK
+      Fan canister: Optimal
+      Fan canister: Optimal
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A6845R01M10F
+         Vendor: VN LSILOGIC
+         Date of manufacture: September 1, 2003
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A6845R01LP0F
+         Vendor: VN LSILOGIC
+         Date of manufacture: September 1, 2003
+      Temperature: Optimal
+      Temperature: Optimal
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: A (left canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T42157019  
+         Vendor: LSILOGIC
+         Date of manufacture: December 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42243503A03    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: May 29, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42243502773    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: May 28, 2004
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: B (right canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T44982464  
+         Vendor: LSILOGIC
+         Date of manufacture: December 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F4224350178A    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: May 27, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F422435022A5    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: May 26, 2004
+
+   Drive Tray 3 Overall Component Information
+      Drive technology: Fibre channel
+      Part number: PN 348-0047304 
+      Serial number: SN 0431015051  
+      Vendor: VN LSILOGIC
+      Date of manufacture: August 1, 2004
+      Tray path redundancy: OK
+      Fan canister: Optimal
+      Fan canister: Optimal
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A6847201A10F
+         Vendor: VN LSILOGIC
+         Date of manufacture: July 1, 2004
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A68472018V0F
+         Vendor: VN LSILOGIC
+         Date of manufacture: July 1, 2004
+      Temperature: Optimal
+      Temperature: Optimal
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: A (left canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T42681368  
+         Vendor: LSILOGIC
+         Date of manufacture: July 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500766    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500846    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: B (right canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T42681573  
+         Vendor: LSILOGIC
+         Date of manufacture: July 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500767    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F429435009AF    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+
+   Drive Tray 4 Overall Component Information
+      Drive technology: Fibre channel
+      Part number: PN 348-0047304 
+      Serial number: SN 0431013880  
+      Vendor: VN LSILOGIC
+      Date of manufacture: August 1, 2004
+      Tray path redundancy: OK
+      Fan canister: Optimal
+      Fan canister: Optimal
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A6847000AW0F
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+      Power supply canister
+         Status: Optimal
+         Part number: PN 348-0049091 
+         Serial number: SN A6847000BZ0F
+         Vendor: VN LSILOGIC
+         Date of manufacture: June 1, 2004
+      Temperature: Optimal
+      Temperature: Optimal
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: A (left canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T42157129  
+         Vendor: LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500A5E    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500C4F    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+      ESM card
+         Status: Optimal
+         Firmware version: 9330
+         Maximum data rate: 2 Gbps
+         Current data rate: 2 Gbps
+         Location: B (right canister)
+         Card communication: OK
+         Product ID: SYM2600-FC
+         Part number: PN 348-0047640 
+         Serial number: SN 1T42156821  
+         Vendor: LSILOGIC
+         Date of manufacture: June 1, 2004
+         SFP
+            Status: Optimal
+            Location: In connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500C37    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+         SFP
+            Status: Optimal
+            Location: Out connection
+            Supported data rate(s): 1 Gbps, 2 Gbps
+            Link length: Intermediate
+            Connector: LC
+            Transmitter type: Shortwave Laser w/o OFC
+            Transmission media: TM Multi-mode 50m(M5) TM Multi-mode 62.5m(M6) 
+            IEEE company ID: 00 01 9c 
+            Revision:     
+            Part number: JSP-21S0AA1     
+            Serial number: F42943500C32    
+            Vendor: JDS UNIPHASE    
+            Date of manufacture: July 13, 2004
+
+MAPPINGS (Storage Partitioning - Disabled)-------------------
+
+
+
+   VOLUME NAME    LUN  CONTROLLER  ACCESSIBLE BY  VOLUME STATUS  
+   Access Volume  31   A,B         Default Group  Optimal        
+   0              0    A           Default Group  Optimal        
+   1              1    B           Default Group  Optimal        
+   10             10   A           Default Group  Optimal        
+   11             11   B           Default Group  Optimal        
+   12             12   A           Default Group  Optimal        
+   13             13   B           Default Group  Optimal        
+   14             14   A           Default Group  Optimal        
+   15             15   B           Default Group  Optimal        
+   16             16   A           Default Group  Optimal        
+   17             17   B           Default Group  Optimal        
+   18             18   A           Default Group  Optimal        
+   19             19   B           Default Group  Optimal        
+   2              2    A           Default Group  Optimal        
+   20             20   A           Default Group  Optimal        
+   21             21   B           Default Group  Optimal        
+   22             22   A           Default Group  Optimal        
+   23             23   B           Default Group  Optimal        
+   24             24   A           Default Group  Optimal        
+   25             25   B           Default Group  Optimal        
+   26             26   A           Default Group  Optimal        
+   27             27   B           Default Group  Optimal        
+   3              3    B           Default Group  Optimal        
+   4              4    A           Default Group  Optimal        
+   5              5    B           Default Group  Optimal        
+   6              6    A           Default Group  Optimal        
+   7              7    B           Default Group  Optimal        
+   8              8    A           Default Group  Optimal        
+   9              9    B           Default Group  Optimal        
+
+
+   TOPOLOGY DEFINITIONS
+      DEFAULT GROUP
+         Default type: Linux
+         Host Port: 10:00:00:06:2b:0d:0e:e8
+         Host Port: 10:00:00:06:2b:0b:0e:54
+         Host Port: 10:00:00:06:2b:0f:13:d8
+         Host Port: 10:00:00:06:2b:0d:11:bc
+         Host Port: 10:00:00:06:2b:0e:74:9c
+         Host Port: 10:00:00:06:2b:0d:0f:b4
+         Host Port: 10:00:00:06:2b:0e:73:2c
+         Host Port: 10:00:00:06:2b:0d:12:34
+
+
+   NVSRAM HOST TYPE INDEX DEFINITIONS
+
+   INDEX        AVT STATUS  TYPE                                    
+   0            Disabled    NCRMPRAS                                
+   1            Disabled    Windows 2000/Server 2003 Non-Clustered  
+   2            Disabled    Solaris                                 
+   3            Enabled     HP-UX                                   
+   4            Disabled    AIX                                     
+   5            Disabled    Irix                                    
+   6 (Default)  Disabled    Linux                                   
+   7            Disabled    Windows NT Clustered (SP5 or higher)    
+   8            Disabled    Windows 2000/Server 2003 Clustered      
+   9            Enabled     Netware Non-Failover                    
+   10           Enabled     PTX                                     
+   11           Enabled     Netware Failover                        
+   12           Enabled     Solaris (with Veritas DMP)              
+
+
