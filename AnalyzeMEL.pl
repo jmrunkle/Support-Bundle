@@ -19,6 +19,8 @@ use warnings;
 our $VERSION = '1.0.1.1';       # version number
 my $DEBUG = 0;                  # to be used for debugging
 my $nohup = 0;                  # for use in non-interactive mode
+my $MAXTRAY = 9;                # maximum number of trays
+my $MAXSLOT = 24;               # maximum number of slots
 
 # use this to set debug mode command line arguments
 if ($DEBUG) { @ARGV = ('-n', 'majorEventLog.txt'); }
@@ -238,9 +240,9 @@ sub print_controller_timeline
 sub print_drive_summary
 {
     print "DRIVE SUMMARY:\n\n";
-    for my $tray (0 .. 8)
+    for my $tray (0 .. $MAXTRAY)
     {
-        for my $slot (0 .. 24)
+        for my $slot (0 .. $MAXSLOT)
         {
             my $loca = "Tray $tray, Slot $slot";
             if ($drive_errors{$loca})
@@ -251,7 +253,8 @@ sub print_drive_summary
                 {
                     my $count = $drive_errors{$loca}->{$desc}->{'count'};
                     $total_errors += $count;
-                    my $time = substr $drive_errors{$loca}->{$desc}->{'time'}, 11;
+                    my $time = substr $drive_errors{$loca}->{$desc}->{'time'}, 
+                                      11;
                     $desc = substr $desc, 13, 51;
                     printf("  %-5s %-51s%-20s\n", $count, $desc, $time);
                 }
@@ -305,8 +308,8 @@ __END__
 =head1 DESCRIPTION
 
     This program parses through a Major Event Log (MEL) searching for critical
-    issues (such as URS conditions) or controller problems and prints them out in 
-    an ordered table form so that the reader can look through it easily.
+    issues (such as URS conditions) or controller problems and prints them out 
+    in an ordered table form so that the reader can look through it easily.
 
 =head1 USAGE
 
@@ -333,11 +336,11 @@ __END__
 =head1 EXIT STATUS
 
     If the program exited successfully, it will exit with a code of 0.
-    Otherwise, the execution was not successful.
+    All other exit codes indicate an error.
 
 =head1 BUGS AND LIMITATIONS
 
-    This program assumes a maximum of 8 trays and 24 slots.
+    This program assumes a maximum of 9 trays and 24 slots.
     Manual alteration is required for anything more specific.
 
 =head1 AUTHOR

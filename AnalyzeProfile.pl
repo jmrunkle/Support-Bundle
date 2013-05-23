@@ -4,10 +4,10 @@
 # AnalyzeProfile.pl - analyzes the storageArrayProfile for disk array 
 #   troubleshooting, gives a health check of the array
 # RCS Keywords:
-#     $Date: 2013-05-10 (Fri, 10 May 2013) $
+#     $Date: 2013-05-22 (Wed, 22 May 2013) $
 #   $Source: /home/AnalyzeSCD.pl $
 #   $Author: jr186037 $
-# $Revision: 1.0.0.0 $
+# $Revision: 2.0.0.0 $
 ################################################################################
 
 package AnalyzeProfile;
@@ -17,18 +17,26 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '1.0.0.0';       # version number
+our $VERSION = '2.0.0.0';       # version number
 my $DEBUG = 0;                  # for debug mode
 my $nohup = 0;                  # for non-interactive mode
+my $MAXTRAY = 9;                # maximum number of trays
+my $MAXSLOT = 24;               # maximum number of slots
 
 # use this to set debug mode command line arguments
-if ($DEBUG) { @ARGV = ('-n', 'storageArrayProfile6.txt'); }
+if ($DEBUG) { @ARGV = ('-n', 'storageArrayProfile4.txt'); }
 
 ################################################################################
 #                              REVISION SUMMARY
 ################################################################################
-# Got all the way to the drive channels portion
-# Having massive trouble with SAP6.txt (fixed those, yeah!)
+# Fixed in 2.0.0.0
+# - Match the whole line to print out the controller status.
+# - Change the data structure which holds the volume information (hash instead
+#   of array) so now I had to revamp the whole method of collecting volume info
+# - Also fixed the minor bug of putting an extra space when no GHS is sparing
+# - Finally, I also added the ability to print out what volumes are not Online
+#   and what drives are not Optimal
+# - Solved the issue of multiple volumes in a volume group
 ################################################################################
 
 #-------------------------------------------------------------------------------
@@ -58,12 +66,12 @@ my $arg = $ARGV[0];    # $arg = command line argument
 # if the argument is "-h" or "-?" or "--help" print usage information
 if (
     ( !$arg ) || (
-        $arg =~ m{^      # at start of string
-              (-h|       # match '-h'
-              -[?]|      # or '-?'
-              --help)    # or '--help'
-              $          # end of string
-              }xsim
+        $arg =~ m{^          # at start of string
+                  (-h|       # match '-h'
+                  -[?]|      # or '-?'
+                  --help)    # or '--help'
+                  $          # end of string
+                 }xsim
     )
   )
 {
@@ -72,11 +80,11 @@ if (
 }
 # if the argument is "-v" or "--version" print version
 elsif (
-    $arg =~ m{^           # at start of string
-            (-v|          # match '-v'
-            --version)    # or '--version'
-            $             # end of string
-            }xsim
+    $arg =~ m{^             # at start of string
+              (-v|          # match '-v'
+              --version)    # or '--version'
+              $             # end of string
+             }xsim
   )
 {
     print_version;
@@ -84,10 +92,10 @@ elsif (
 }
 # if the argument is "-n" or "--nohup" run w/o input
 elsif ($arg =~ m{^            # at start of string
-                   (-n|         # match '-n'
-                   --nohup)     # or '--nohup'
-                   $            # end of string
-                   }xsim)
+                 (-n|         # match '-n'
+                 --nohup)     # or '--nohup'
+                 $            # end of string
+                }xsim)
 {
     $nohup = 1;
     $arg = $ARGV[1];
@@ -117,11 +125,13 @@ my $damc;
 my %controllers;
 my $controller;
 
-# @volumes holds the volume properties
+# %volumes holds the volume properties
 #   $volumes[#]->{'status'=>status,'type'=type,
 #                 'drives'=>[drives],'raid'=>raidlevel}
+# %current_volume_info holds the volume properties until you know the volume
 # $volume holds the name of the current volume
-my @volumes;
+my %volumes;
+my %current_volume_info;
 my $volume;
 
 # @drives holds the following drive properties
@@ -143,102 +153,107 @@ while(<SAP>) {
     if ($_ =~ m{^               # line starts with
                 \s*             # (optional spaces)
                 CONTROLLERS-    # 'CONTROLLERS-'
-               }xsm)
+               }xsm)            # should catch ' CONTROLLERS---------'
     { $section = 'controllers'; }
     elsif ($_ =~ m{^          # line starts with
                    \s*        # (optional spaces)
                    VOLUME     # 'VOLUME'
                    \s         # a space
                    GROUPS-    # 'GROUPS-'
-                  }xsm)
+                  }xsm)       # should catch ' VOLUME GROUPS---------'
     { $section = 'volumes'; }
     elsif ($_ =~ m{^           # line starts with
                    STANDARD    # 'STANDARD'
                    \s          # a space
                    VOLUMES-    # 'VOLUMES-'
-                  }xsm)
+                  }xsm)        # should catch 'STANDARD VOLUMES--------'
     { $section = ''; }
     elsif ($_ =~ m{^          # line starts with
                    \s*        # (optional spaces)
                    DRIVES-    # 'DRIVES-'
-                  }xsm)
+                  }xsm)       # should catch ' DRIVES---------'
     { $section = 'drives'; }
     elsif ($_ =~ m{^            # line starts with
                    \s+          # space(s)
                    DRIVE        # 'DRIVE'
                    \s           # a space
                    CHANNELS:    # 'CHANNELS:'
-                  }xsm)
+                  }xsm)         # should catch ' DRIVE CHANNELS:'
     { $section = ''; }
     elsif ($_ =~ m{^            # line starts with
                    \s*          # (optional spaces)
-                   HOT          # 'HOT'
-                   \s           # a space
-                   SPARE        # 'SPARE'
-                   \s           # a space
-                   COVERAGE:    # 'COVERAGE:'
-                  }xsm)
+                   # 'HOT SPARE COVERAGE:'
+                   HOT \s SPARE \s COVERAGE:
+                  }xsm)         # should catch ' HOT SPARE COVERAGE:'
     { $section = 'hot spares'; }
     elsif ($_ =~ m{^          # line starts with
                    \s+        # space(s)
                    DETAILS    # DETAILS
                    $          # end of line
-                  }xsm)
+                  }xsm)       # should catch ' DETAILS'
     { $section = ''; $subsection = ''; }
-    elsif ($_ =~ m{^
+    elsif ($_ =~ m{^                    # line starts with
+                   # 'PROFILE FOR STORAGE ARRAY:'
                    PROFILE \s FOR \s STORAGE \s ARRAY:
-                   \s
-                   (DAMC\d+-\d+-\d+)
-                   \s
+                   \s                   # a space
+                   (DAMC\d+-\d+-\d+)    # 'DAMC###-##-##' (backref 1)
                   }xsm)
+        # should catch 'PROFILE FOR STORAGE ARRAY: DAMC101-6-3'
     { $damc = $1; }
     if ($section eq 'controllers')
     {
+        # if we are in the controllers section
         if ($_ =~ m{Controller \s in .+ Slot \s [0A]}xsm)
-        # if 'Controller in ... Slot [0A]'
+        # if 'Controller in ... Slot [0A]', set controller to 'a'
         { $controller = 'a'; $subsection = 'controller'; }
         elsif ($_ =~ m{Controller \s in .+ Slot \s [1B]}xsm)
-        # if 'Controller in ... Slot [0B]'
+        # if 'Controller in ... Slot [1B]', set controller to 'b'
         { $controller = 'b'; $subsection = 'controller'; }
         elsif ($subsection eq 'controller' &&
-               $_ =~ m{^
-                       \s+
-                       Status:
-                       \s+
-                       (\w+)
-                      }xsm)
-        { $controllers{$controller}->{'status'} = $1; }
+               $_ =~ m{^          # line starts with
+                       \s+        # space(s)
+                       Status:    # 'Status:'
+                       \s+        # space(s)
+                       (.+)       # anything
+                       \s*        # optional space(s)
+                       $          # end of the line
+                      }xsm)       # should catch ' Status: Optimal'
+        { 
+            my $temp = $1;
+            $temp =~ s/^\s+|\s+$//g;
+            $controllers{$controller}->{'status'} = $temp; 
+        }
         elsif ($subsection eq 'controller' && 
-               $_ =~ m{^
-                       \s+
-                       Firmware
-                       \s
-                       version:
-                       \s+
-                       (\d+[.]\d+[.]\d+[.]\d+)
-                      }xsm)
+               $_ =~ m{^                 # line starts with
+                       \s+               # space(s)
+                       Firmware          # 'Firmware'
+                       \s                # space(s)
+                       version:          # 'versions:'
+                       \s+               # space(s)
+                       ((\d+[.])+\d+)    # ##.##.##.## (backref 1)
+                      }xsm)              # should catch 'Firmware version: ...'
         { $controllers{$controller}->{'fw'} = $1; }
         elsif ($subsection eq 'controller' &&
-               $_ =~ m{^
-                       \s+
-                       Board
-                       \s
-                       ID:
-                       \s+
-                       (\d+)
-                      }xsm)
+               $_ =~ m{^        # line starts with
+                       \s+      # space(s)
+                       Board    # 'Board'
+                       \s       # a space
+                       ID:      # 'ID:'
+                       \s+      # space(s)
+                       (\d+)    # number(s) (backref 1)
+                      }xsm)     # should catch ' Board ID:  2660'
         { $controllers{$controller}->{'type'} = $1; }
         elsif ($subsection eq 'controller' &&
-               $_ =~ m{^
-                       \s+
-                       Serial
-                       \s
-                       number:
-                       \s+
-                       (\w+)
-                       \s+
-                       $
-                      }xsm)
+               $_ =~ m{^          # line starts with
+                       \s+        # space(s)
+                       Serial     # 'Serial'
+                       \s         # a space
+                       number:    # 'number:'
+                       \s+        # space(s)
+                       (\w+)      # a word (backref 1)
+                       \s+        # space(s)
+                       $          # end of line
+                      }xsm)       
         {
             $controllers{$controller}->{'sn'} = $1;
             $subsection = '';
@@ -246,147 +261,230 @@ while(<SAP>) {
     }
     elsif ($section eq 'volumes')
     {
-        if ($_ =~ m{^
-                    \s+
-                    Name:
-                    \s+
-                    (\d+)
-                    \s+
-                    $
-                   }xsm)
-        { $subsection = ''; $volume = $1-1; }
-        elsif ($_ =~ m{^
-                       \s+
-                       VOLUME \s GROUP
-                       \s
-                       (\d+)
-                       \s
-                       \(RAID\s
-                       (\d+)
-                       \)}xsm)
+        # if we are in the volumes section
+        if ($_ =~ m{^        # line starts with
+                    \s+      # space(s)
+                    Name:    # 'Name:'
+                    \s+      # space(s)
+                    (\S+)    # nonspace(s) (backref 1)
+                    \s+      # space(s)
+                    $        # end of line
+                   }xsm)     # should catch ' Name:    10 '
+        # we are in a new volume, so start changing information.
+        { 
+            $subsection = ''; 
+            undef $volume;
+            # assume the volume is one less than the volume group as a guess
+            # NOTE: this is only possible with a fully numeric volume group...
+            if ($1 !~ /\D/) { $volume = {$1-1 => 1}; }
+            undef %current_volume_info;
+        }
+        elsif ($_ =~ m{^                  # line starts with
+                       \s+                # space(s)
+                       VOLUME \s GROUP    # 'VOLUME GROUP'
+                       \s                 # a space
+                       (\d+)              # number(s) (backref 1)
+                       \s                 # a space
+                       \(RAID\s           # '(RAID '
+                       (\d+)              # number(s) (backref 2)
+                       \)                 # ')'
+                      }xsm)
+            # should catch ' VOLUME GROUP (RAID 1)'
         {
             $subsection = '';
-            $volume = $1-1;
-            $volumes[$volume]->{'raid'} = $2;
+            # assume the volume is one less than the volume group
+            $volume = {$1-1 => 1};
+            $current_volume_info{'raid'} = $2;
         }
-        elsif (($_ =~ m{^
-                       \s+
-                       Status:
-                       \s+
-                       (\w+)
-                       \s+
-                       $
-                      }xsm) || 
-               ($_ =~ m{^
-                        \s+
+        elsif (($_ =~ m{^          # line starts with
+                        \s+        # space(s)
+                        Status:    # 'Status:'
+                        \s+        # space(s)
+                        (\w+)      # a word (backref 1)
+                        \s+        # space(s)
+                        $          # end of line
+                       }xsm) ||
+               ($_ =~ m{^        # line starts with
+                        \s+      # space(s)
+                        # 'Volume group status:'
                         Volume \s group \s status:
-                        \s+
-                        (\w+)
-                       }xsm))
-        { $volumes[$volume]->{'status'} = $1; }
-        elsif ($_ =~ m{^
-                       \s+
-                       RAID
-                       \s
-                       level:
-                       \s+
-                       (\d+)
-                       \s+
-                       $
-                      }xsm)
-        { $volumes[$volume]->{'raid'} = $1; }
-        elsif ($_ =~ m{^
-                       \s+
+                        \s+      # space(s)
+                        (\w+)    # a word (backref 1)
+                       }xsm))    # should catch ' Volume group status: Optimal'
+        # store the volume's status
+        { $current_volume_info{'status'} = $1; }
+        elsif ($_ =~ m{^         # line starts with
+                       \s+       # space(s)
+                       RAID      # 'RAID'
+                       \s        # a space
+                       level:    # 'level:'
+                       \s+       # space(s)
+                       (\d+)     # number(s) (backref 1)
+                       \s+       # space(s)
+                       $         # end of line
+                      }xsm)      # shoudl catch ' RAID level:    1 '
+        # store the volume's RAID level
+        { $current_volume_info{'raid'} = $1; }
+        elsif ($_ =~ m{^              # line starts with
+                       \s+            # space(s)
+                       # 'Media' or 'Drive media' (backref 1)
                        (Media|
                        Drive \s media)
-                       \s
-                       type:
-                       \s+
-                       ((\w+\s*)+)
-                       $
-                      }xsm)
-        { $volumes[$volume]->{'type'} = $2; }
-        elsif ($_ =~ m{^
-                       \s+
-                       Associated \s drives
-                      }xsm)
+                       \s             # a space
+                       type:          # 'type:'
+                       \s+            # space(s)
+                       ((\w+\s*)+)    # words and spaces (backref 2) until...
+                       $              # end of line
+                      }xsm)           # should catch ' Media type: Hard Disk...'
+        # store the volume's media type (HDD vs SSD)
+        { $current_volume_info{'type'} = $2; }
+        elsif ($_ =~ m{^                    # line starts with
+                       \s+                  # space(s)
+                       Current \s owner:    # 'Current owner:'
+                       ((\s*\S+)+)          # mix of space/nonspace (backref 1)
+                       \s*                  # optional space(s)
+                       $                    # end of line
+                      }xsm) 
+            # should catch '  Current owner:   Controller in slot A  '
         { 
-            $subsection = 'associated';
-            $volumes[$volume]->{'drives'} = [];
+            my $owner_string = $1;
+            if ($owner_string =~ m{\sA}xsm) 
+            { $current_volume_info{'owner'} = 'A'; }
+            else 
+            { $current_volume_info{'owner'} = 'B'; }
         }
-        elsif ($subsection eq 'associated' &&
-               $_ =~ m{^
-                       \s+
-                       (\d+)
-                       \s+
-                       (\d+)
-                      }xsm)
+        elsif ($_ =~ m{^       # line starts with
+                       \s+     # space(s)
+                       # 'Associated volumes'
+                       Associated \s volumes
+                      }xsm)    # should catch ' Associated drives'
+        # set subsection for associated volumes to 'volume'
+        { $subsection = 'volume'; undef $volume; }
+        elsif ($subsection eq 'volume' &&
+               $_ =~ m{^            # line starts with
+                       \s+          # space(s)
+                       (\d+)        # number(s) (backref 1)
+                       \s+          # space(s)
+                       \S+ \s GB    # nonspace(s) a space and 'GB'
+                       \s*          # optional space(s)
+                       \w*          # an optional word
+                       \s*          # optional space(s)
+                       $            # end of line character
+                      }xsm)         # should catch '  34   267.903 GB  Yes  '
+        {
+            if (defined $volume) { $volume = {%$volume, $1 => 1}; }
+            else { $volume = { $1 => 1 }; }
+            $volumes{$1} = {
+                'status' => $current_volume_info{'status'},
+                'raid'   => $current_volume_info{'raid'},
+                'type'   => $current_volume_info{'type'},
+                'owner'  => $current_volume_info{'owner'}
+             }
+        }
+        elsif ($_ =~ m{^       # line starts with
+                       \s+     # space(s)
+                       # 'Associated drives'
+                       Associated \s drives
+                      }xsm)    # should catch ' Associated drives'
+        { 
+            # set subsection for associated drives to 'drives'
+            $subsection = 'drives';
+            for my $vol (keys %$volume)
+            {
+                if (!(defined $volumes{$vol}))
+                {
+                    $volumes{$vol} = {
+                        'status' => $current_volume_info{'status'},
+                        'raid'   => $current_volume_info{'raid'},
+                        'type'   => $current_volume_info{'type'},
+                        'owner'  => $current_volume_info{'owner'}
+                    }
+                }
+                $volumes{$vol}->{'drives'} = [];
+            }
+        }
+        elsif ($subsection eq 'drives' &&
+        # if we're in the associated drives section and we match the following
+               $_ =~ m{^        # line starts with
+                       \s+      # space(s)
+                       (\d+)    # number(s) (backref 1)
+                       \s+      # space(s)
+                       (\d+)    # number(s) (backref 2)
+                      }xsm)     # should catch ' 0    4'
         {
             my ($tray, $slot) = ($1, $2);
+            # add a space to slots less than 10 for printing later
             if ($slot < 10) { $slot = "$slot "; }
-            $volumes[$volume]->{'drives'} = 
-                [@{$volumes[$volume]->{'drives'}}, "$tray,$slot"];
+            # this is a basic "push" style adding of the new drive
+            for my $vol (keys %$volume)
+            {
+                $volumes{$vol}->{'drives'} = 
+                [@{$volumes{$vol}->{'drives'}}, "$tray,$slot"];
+            }
         }
         
     }
     elsif($section eq 'drives')
     {
-        if ($_ =~ m{^\s+
-                    (\d+),\s+(\d+)
-                    \s+
-                    (\w+)
-                    \s+
-                    \S+\s+GB
-                    \s+
-                    (\w+\s+\w+\s+\w+)
-                    \s+
-                    \w+
-                    \s+
-                    \d+\s+Gbps
-                    \s+
-                    (\S+)
-                    \s+
-                    (\w+)
+        if ($_ =~ m{^\s+                 # line starts with
+                    (\d+),\s+(\d+)       # '##, ##' (backref 1 and 2)
+                    \s+                  # space(s)
+                    (\w+)                # a word (backref 3)
+                    \s+                  # space(s)
+                    \S+\s+GB             # non-space(s) ' GB'
+                    \s+                  # space(s)
+                    (\w+\s+\w+\s+\w+)    # 'WORD WORD WORD' (backref 4)
+                    \s+                  # space(s)
+                    \w+                  # a word
+                    \s+                  # space(s)
+                    \d+\s+Gbps           # number(s) ' Gbps'
+                    \s+                  # space(s)
+                    (\S+)                # non-space(s) (backref 5)
+                    \s+                  # space(s)
+                    (\w+)                # a word (backref 6)
                    }xsm)
+            # should catch ' 1, 3  Optimal  333.33 GB  Hard Disk Drive ... '
         { $drives[$1]->{$2} = {
                                   'status' => $3,
                                   'type' => $4,
                                   'product id' => $5,
                                   'fw' => $6
                               }; }
-        elsif ($_ =~ m{^\s+
-                       (\d+),\s+(\d+)
-                       \s+
-                       (\w+)
-                       \s+
-                       \S+\s+GB
-                       \s+
-                       \d+\s+Gbps
-                       \s+
-                       (\S+)
-                       \s+
-                       (\w+)
+        elsif ($_ =~ m{^\s+              # line starts with
+                       (\d+),\s+(\d+)    # '##, ##' (backref 1 and 2)
+                       \s+               # space(s)
+                       (\w+)             # a word (backref 3)
+                       \s+               # space(s)
+                       \S+\s+GB          # non-space(s) ' GB'
+                       \s+               # space(s)
+                       \d+\s+Gbps        # number(s) ' Gbps'
+                       \s+               # space(s)
+                       (\S+)             # non-space(s) (backref 4)
+                       \s+               # space(s)
+                       (\w+)             # a word (backref 5)
                       }xsm)
+            # should catch ' 1, 3  Optimal  333.33 GB  6 Gbps  ...'
         { $drives[$1]->{$2} = {
                                   'status' => $3,
                                   'product id' => $4,
                                   'fw' => $5
                               }; }
-        elsif ($_ =~ m{^\s+
-                       (\d+),\s+(\d+)
-                       \s+
-                       (\w+)
-                       \s+
-                       \S+\s+GB
-                       \s+
-                       \w+
-                       \s+
-                       \d+\s+Gbps
-                       \s+
-                       (\S+)
-                       \s+
-                       (\w+)
+        elsif ($_ =~ m{^\s+              # line starts with space(s)
+                       (\d+),\s+(\d+)    # '##, ##' (backref 1 and 2)
+                       \s+               # space(s)
+                       (\w+)             # a word (backref 3)
+                       \s+               # space(s)
+                       \S+\s+GB          # non-space(s) ' GB'
+                       \s+               # space(s)
+                       \w+               # a word
+                       \s+               # space(s)
+                       \d+\s+Gbps        # number(s) ' Gbps'
+                       \s+               # space(s)
+                       (\S+)             # non-space(s) (backref 4)
+                       \s+               # space(s)
+                       (\w+)             # a word (backref 5)
                       }xsm)
+            # should catch ' 1,  3  Optimal  333.33 GB  FCdr  6 Gbps ...'
         { $drives[$1]->{$2} = {
                                   'status' => $3,
                                   'product id' => $4,
@@ -395,36 +493,47 @@ while(<SAP>) {
     }
     elsif($section eq 'hot spares') 
     {
-        if ($_ =~ m{Total \s hot \s spare \s drives:
-                    \s+
-                    (\d+)
-                   }xsm)
+        # if we are in the GHS section
+        if ($_ =~ m{
+                    # matches 'Total hot spare drives:'
+                    Total \s hot \s spare \s drives:
+                    \s+      # space(s)
+                    (\d+)    # number(s) (backref 1)
+                   }xsm)     # should catch 'Total hot spare drives: 1'
+        # end the section if there are not GHS drives
         { if ($1 == 0) { $section = ''; } }
-        elsif ($_ =~ m{^
-                       \s*
+        elsif ($_ =~ m{^                    # line starts with
+                       \s*                  # optional space(s)
+                       # 'Standby drive at '
                        Standby \s drive \s at \s
-                       tray \s (\d+), \s
-                       slot \s (\d+)
+                       tray \s (\d+), \s    # 'tray ' number(s), (backref 1)
+                       slot \s (\d+)        # 'slot ' number(s), (backref 2)
                       }xsm)
+            # should catch 'Standby drive at tray 8, slot 16'
+        # add any GHS drives to the @hot_spares array
         { $subsection = ''; push(@hot_spares,[$1,$2]); }
-        elsif ($_ =~ m{^
-                       \s*
+        elsif ($_ =~ m{^                    
+                       \s*                  
                        In \s use \s drive \s at \s
-                       tray \s (\d+), \s
-                       slot \s (\d+)
-                      }xsm)
+                       tray \s (\d+), \s    
+                       slot \s (\d+)        
+                      }xsm)                 
         {
             push(@hot_spares,[$1,$2]);
             $hot_spares_inuse{$1}->{$2} = 1;
+            # flag a special subsection for the [tray, slot] in case in use
             $subsection = [$1, $2];
         }
         elsif ($subsection &&
-               $_ =~ m{^
-                       \s*
+               $_ =~ m{^                    # line starts with
+                       \s*                  # optional space(s)
+                       # 'Sparing for drive at '
                        Sparing \s for \s drive \s at \s
-                       tray \s (\d+), \s
-                       slot \s (\d+)
+                       tray \s (\d+), \s    # 'tray ' number(s)', ' (backref 1)
+                       slot \s (\d+)        # 'slot ' number(s) (backref 2)
                       }xsm)
+            # should catch 'Sparing for drive at tray 4, slot 3'
+        # append the location where the GHS is sparing for another drive
         { $hot_spares_inuse{$subsection->[0]}->{$subsection->[1]} = [$1, $2]; }
     }
 }
@@ -444,34 +553,72 @@ sub print_controller_information
     { printf("These are %s controllers with %s FW.\n\n",
            $controllers{'b'}->{'type'},$controllers{'b'}->{'fw'}); }
     printf("Controller A (%s) is %s.\n",
-        ($controllers{'a'}->{'sn'}?$controllers{'a'}->{'sn'}:'No SN'),
-        ($controllers{'a'}->{'status'}?$controllers{'a'}->{'status'}:'N/A'));
+        ($controllers{'a'}->{'sn'} ? # check for a SN
+         $controllers{'a'}->{'sn'} : # print
+         'No SN found'),             # or print not found
+        ($controllers{'a'}->{'status'} ? # check for a status
+         $controllers{'a'}->{'status'} : # print
+         'Unknown'));                    # or print unknown
     printf("Controller B (%s) is %s.\n",
-        ($controllers{'b'}->{'sn'}?$controllers{'b'}->{'sn'}:'No SN'),
-        ($controllers{'b'}->{'status'}?$controllers{'b'}->{'status'}:'N/A'));
+        ($controllers{'b'}->{'sn'} ? # check for a SN
+         $controllers{'b'}->{'sn'} : # print
+         'No SN found'),             # or print not found
+        ($controllers{'b'}->{'status'} ? # check for a status
+         $controllers{'b'}->{'status'} : # print
+         'Unknown'));                    # or print unknown
     print "\n",'-'x79,"\n";
     return;
+}
+
+# max - prints out the maximum of a list of values
+sub max
+{
+    my $max;
+    foreach (@_)
+    { if (!(defined $max) || $_ > $max) { $max = $_; } }
+    return $max;
 }
 
 # print_volume_information - prints out the volume information
 sub print_volume_information
 {
-    print "\nVOLUMES\n\n";
-    print '/','-'x65,'\\',"\n";
-    printf("| %-6s |  %-6s  | %-4s | %-5s | %-28s |\n",
-           'Volume','Status','RAID','Media','Drives');
-    print '|','='x8,'|','='x10,'|','='x6,'|','='x7,'|','='x30,'|',"\n";
-    foreach (0 .. $#volumes)
+    my @bad_volumes;
+    foreach (0 .. max(keys %volumes))
     {
-        printf("|   %-3s  | %-8s |  %-2s  |  %-3s  | %-28s |\n",
-               $_,$volumes[$_]->{'status'},
-               $volumes[$_]->{'raid'},
-               ($volumes[$_]->{'type'} ? 
-                ($volumes[$_]->{'type'} =~ m{Hard}xsm ? 'HDD' : 'SSD') :
-                'N/A'),
-               join('  ',@{$volumes[$_]->{'drives'}}));
+        if ($volumes{$_} &&
+            $volumes{$_}->{'status'} ne 'Online' &&
+            $volumes{$_}->{'status'} ne 'Optimal')
+        { push(@bad_volumes,[$_, $volumes{$_}->{'status'}]); }
     }
-    print '\\','-'x65,'/',"\n\n";
+    if (@bad_volumes) 
+    {
+        print "\nNON-OPTIMAL VOLUMES\n\n";
+        print "    Volume ",$_->[0]," is ",$_->[1],"\n" foreach(@bad_volumes);
+    }
+    print "\nVOLUMES\n\n";
+    print '/','-'x73,'\\',"\n";
+    printf("| %-6s |  %-6s  | %-4s | %-5s | %-5s | %-28s |\n",
+           'Volume','Status','RAID','Media','Owner','Drives');
+    print '|','='x8,'|','='x10,'|','='x6,'|';
+    print '='x7,'|','='x7,'|','='x30,'|',"\n";
+    foreach (0 .. max(keys %volumes))
+    {
+        if (defined $volumes{$_})
+        {
+            printf("|   %-3s  | %-8s |  %-2s  |  %-3s  |   %1s   | %-28s |\n",
+                $_,$volumes{$_}->{'status'},
+                $volumes{$_}->{'raid'},
+                # for the type, print 'HDD', 'SSD' or 'N/A'
+                ($volumes{$_}->{'type'} ? # if there's something recorded...
+                 ($volumes{$_}->{'type'} =~ m{Hard}xsm ? 'HDD' : 'SSD') :
+                'N/A'),
+                $volumes{$_}->{'owner'},
+                (scalar @{$volumes{$_}->{'drives'}} != 0 ?
+                join('  ',@{$volumes{$_}->{'drives'}}) :
+                'ERROR, CHECK FULL PROFILE!'));
+           }
+    }
+    print '\\','-'x73,'/',"\n\n";
     print '-'x79,"\n";
     return;
 }
@@ -479,19 +626,39 @@ sub print_volume_information
 # print_drive_information - prints out the drive information
 sub print_drive_information
 {
+    my @bad_drives;
+    for my $tray (0 .. $#drives)
+    {
+        for my $slot (keys %{$drives[$tray]})
+        {
+            if ($drives[$tray]->{$slot}->{'status'} ne 'Optimal')
+            { push(@bad_drives,
+                   [$tray, $slot, $drives[$tray]->{$slot}->{'status'}]);
+            }
+        }
+    }
+    if (@bad_drives) 
+    {
+        print "\nNON-OPTIMAL DRIVES\n\n";
+        foreach(@bad_drives)
+        {
+            print "    Drive at ",$_->[0],',',$_->[1]," is ",$_->[2],".\n";
+        }
+    }
     print "\nDRIVES\n\n";
     print '/','-'x56,'\\',"\n";
     printf("| %-5s  |   %-6s   | %-5s |  %-2s  | %-17s |\n",
            'Drive','Status','Media','FW','Product ID');
     print '|','='x8,'|','='x12,'|','='x7,'|','='x6,'|','='x19,'|',"\n";
-    for my $tray (0 .. 8)
+    for my $tray (0 .. $MAXTRAY)
     {
-        for my $slot (1 .. 24)
+        for my $slot (0 .. $MAXSLOT)
         {
             if($drives[$tray] && $drives[$tray]->{$slot})
             { printf("|  %-4s  | %-10s |  %-3s  | %-4s | %-17s |\n",
                    "$tray,$slot",
                     $drives[$tray]->{$slot}->{'status'},
+                    # for drive type print 'HDD', 'SSD', or 'N/A'
                    ($drives[$tray]->{$slot}->{'type'} ?
                      ($drives[$tray]->{$slot}->{'type'} =~ m{Hard}xsm ? 
                      'HDD' : 'SSD' ) : 
@@ -520,7 +687,8 @@ sub print_hot_spares
             print $hot_spares_inuse{$tray}->{$slot}->[1],")\n";
         }
     }
-    print "\n",'-'x79,"\n";
+    if (%hot_spares_inuse) { print "\n"; }
+    print '-'x79,"\n";
     return;
 }
 
@@ -535,10 +703,12 @@ sub print_damc
 #-------------------------------------------------------------------------------
 
 print '-'x79,"\n";
+
+# only print information we actually have
 if ($damc) { print_damc; }
 if (%controllers) { print_controller_information; }
 if (@hot_spares) { print_hot_spares; }
-if (@volumes) { print_volume_information; }
+if (%volumes) { print_volume_information; }
 if (@drives) { print_drive_information; }
 
 1;
@@ -553,13 +723,14 @@ __END__
 
 =head1 NAME
 
-AnalyzeSCD.pl - Analyzes stateCaptureData for disk array troubleshooting
+AnalyzeProfile.pl - Analyzes storageArrayProfile for disk array troubleshooting
 
 =head1 DESCRIPTION
 
-This program parses through the stateCaptureData checking error counts and
-statistical variation so that support associates can quickly parse through
-the oceans of information contained in this file.
+This program parses through the storageArrayProfile of a support bundle. This
+quickly parses through the dense information to provide a summary that can
+describe the health of the system. Similar to the server management or GUI
+in SYMplicity for getting the basic health of the system.
 
 =head1 USAGE
 
@@ -586,11 +757,11 @@ C<perl AnalyzeProfile.pl [-n|-?|-v|storageArrayProfile.txt]>
 =head1 EXIT STATUS
 
     If the program exited successfully, it will exit with a code of 0.
-    Otherwise, the execution was not successful.
+    All other exit codes indicate an error.
 
 =head1 BUGS AND LIMITATIONS
 
-    This program assumes a maximum of 8 trays and 24 slots.
+    This program assumes a maximum of 9 trays and 24 slots.
     Manual alteration is required for anything more specific.
 
 =head1 AUTHOR
@@ -598,12 +769,3 @@ C<perl AnalyzeProfile.pl [-n|-?|-v|storageArrayProfile.txt]>
 Jason Michael Runkle <jason.runkle@teradata.com>
 
 =cut
-
-# Local Variables:
-#   mode: cperl
-#   cperl-indent-level: 4
-#   fill-column: 78
-#   indent-tabs-mode: nil
-#   c-indentation-style: bsd
-# End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :
