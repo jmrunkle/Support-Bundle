@@ -6,7 +6,7 @@
 #     $Date: 2013-05-13 (Mon, 13 May 2013) $
 #   $Source: /home/AnalyzeMEL.pl $
 #   $Author: jr186037 $
-# $Revision: 1.0.1.1 $
+# $Revision: 2.0.0.0 $
 ################################################################################
 
 package SupportBundle::AnalyzeMEL;
@@ -16,7 +16,7 @@ use warnings;
 
 #-------------------------------------------------------------------------------
 
-our $VERSION = '1.0.1.1';       # version number
+our $VERSION = '2.0.0.0';       # version number
 my $DEBUG = 0;                  # to be used for debugging
 my $nohup = 0;                  # for use in non-interactive mode
 my $MAXTRAY = 9;                # maximum number of trays
@@ -36,6 +36,10 @@ if ($DEBUG) { @ARGV = ('-n', 'majorEventLog.txt'); }
 ################################################################################
 # Fixed in 1.0.1.1:
 # - Fixed a slight issue in the checking of controller resets
+################################################################################
+# Fixed in 2.0.0.0:
+# - added an ignore list and logic to ignore certain types of errors
+# - added logic to ignore errors on a drive from before it was reconstructed
 ################################################################################
 
 #-------------------------------------------------------------------------------
@@ -107,40 +111,62 @@ open(MEL, "<", "$arg") or die("Could not open file: $arg");
 print "Done.\nBuilding data structures... ";
 
 # @all_errors holds all the errors in the array regardless of type
-my @all_errors = ();
+my @all_errors;
 
 # @current_error holds the current error information in the following format:
 # [ 1. Date, 2. Description, 3. Type, 4. Location ]
-my @current_error = ();
+my @current_error;
 
 # %drive_errors holds a hash of all the drive errors in the following format:
 # $drive_errors{"location"}->{"description"}->('time'=>time,'count'=>count)
-my %drive_errors = ();
+my %drive_errors;
 
 # @controller_timeline holds an array summary of major controller events.
 # Format is: [ 1. Date, 2. Description, 3. Location ]
-my @controller_timeline = ();
+my @controller_timeline;
 
 # @urs_timeline holds an array summary of URS events.
 # Format is: [ 1. Date, 2. Description, 3. Location ]
-my @urs_timeline = ();
+my @urs_timeline;
 
-# $first is a constant which indicates if this is the first pass
-my $first = 1;
+# %reconstructed is a hash that holds drives which have finished reconstruction
+my %reconstructed;
+
+# %ignore is a hash of all the errors to ignore (returns 1 for those errors)
+my %ignore = (
+    'Description: Dacstore region has moved' => 1,
+    'Description: Safe pass-through issued' => 1,
+    'Description: Drive firmware and/or '.
+        'interposer firmware download is completed' => 1,
+    'Description: Drive firmware download started' => 1
+);
 
 while(<MEL>) {
     chomp;
     # Date indicates a new error
     if ($_ =~ m/^Date/xsim)
     {
-        # if not the first error
-        if (!$first)
+        # current_error[0] will be defined unless it is the first error
+        if (defined($current_error[0]) &&
+        # also make sure the drive has not finished reconstruction
+            !($reconstructed{$current_error[3]}) &&
+        # also make sure the error is not in our ignore list
+            !($ignore{$current_error[1]}))
         {
             # extract some useful bindings for simplicity
             my ($time, $desc, $type, $loca) = @current_error;
             # if this is a drive component
             if ($type =~ m/Drive/xsm)
             {
+                # if the drive has finished reconstruction, add to recon hash
+                if ($desc =~ m{(Reconstruction \s completed|
+                               drive \s replacement \s succeeded)
+                              }xsm)
+                { $reconstructed{$loca} = 1; }
+                elsif ($desc =~ m{CHECK \s CONDITION}xsm)
+                { 
+                    # do something in the future...
+                }
                 $loca = substr $loca, 20;    # remove 'Component location : '
                 # if this error has been seen before
                 if ($drive_errors{$loca} &&
@@ -158,10 +184,10 @@ while(<MEL>) {
             }
             # if this is a special controller error -> controller timeline
             if ($type =~ m/Controller/xsm &&
-                $desc =~ m{(start-of-day|    # start of day events
-                            parity|          # memory parity errors
-                            persistent|      # persistent issues
-                            reset)           # controller resets
+                $desc =~ m{(start-of-day|       # start of day events
+                            parity|             # memory parity errors
+                            persistent|         # persistent issues
+                            controller reset)   # controller resets
                             }xsim)
             {
                 push(@controller_timeline, [$time, $desc, $loca]);
@@ -183,7 +209,6 @@ while(<MEL>) {
                      Component)         # 'Component (type|location)'
                      }xsm)
     {
-        $first = 0;                             # flag no longer first
         push(@current_error, $_);               # append element to error
     }
 }
